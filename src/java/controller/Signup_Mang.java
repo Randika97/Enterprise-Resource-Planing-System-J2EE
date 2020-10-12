@@ -5,7 +5,7 @@
  */
 package controller;
 
-import Beans.Mang_beans;
+import beans.Mang_beans;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;

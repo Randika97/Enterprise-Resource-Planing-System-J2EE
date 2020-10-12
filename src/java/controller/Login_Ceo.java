@@ -5,7 +5,7 @@
  */
 package controller;
 
-import Beans.loginbeans;
+import beans.loginbeans;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;

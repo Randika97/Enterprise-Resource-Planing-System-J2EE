@@ -22,7 +22,7 @@ public class DB {
 
     public static void createMyConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
-        c = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory", "root", "");
+        c = DriverManager.getConnection("jdbc:mysql://shreder.cyvr3hgt0z1q.ap-southeast-1.rds.amazonaws.com:3306/inventory?&useSSL=false", "root", "Shredder1234$");
     }
 
     public static void iud(String sql) throws Exception {

@@ -7,7 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import Beans.Emp_beans;
+import beans.Emp_beans;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
