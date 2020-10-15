@@ -22,14 +22,14 @@ import javax.servlet.http.HttpSession;
  *
  * @author ALPHA
  */
-@WebServlet(name = "Login_Ceo", urlPatterns = {"/Login_Ceo"})
-public class Login_Ceo extends HttpServlet {
+@WebServlet(name = "Login_Mang", urlPatterns = {"/Login_Mang"})
+public class LoginMiddleManagement extends HttpServlet {
 
-
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+
          try {
             
             loginbeans ub = new loginbeans();
@@ -42,26 +42,26 @@ public class Login_Ceo extends HttpServlet {
             loginCookie.setMaxAge(30*60);
             response.addCookie(loginCookie);
             
-            String sql = "SELECT * FROM `ceo` WHERE `UserName` ='"+UserName+"' AND `Password` = '"+pass+"'";
+            String sql = "SELECT * FROM `manager` WHERE `UserName` ='"+UserName+"' AND `Password` = '"+pass+"'";
             ResultSet search = DB.search(sql);
             if (search.next()) {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", UserName);
-                RequestDispatcher r = request.getRequestDispatcher("Ceo_dashboard.jsp?message=Hello+" + UserName + "");
+                RequestDispatcher r = request.getRequestDispatcher("Mang_Dashboard.jsp?message=Hello+" + UserName + "");
                 r.forward(request, response);
                 
             } else {
-                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ceo_Login.jsp?message=<font color=red>Either user name or password is wrong.</font>");
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Mang_Login.jsp?message=<font color=red>Either user name or password is wrong.</font>");
 			rd.include(request, response);
             }
         } catch (Exception ex) {
              PrintWriter out = response.getWriter();
              out.print(ex);
         }
-        
     }
 
+  
     @Override
     public String getServletInfo() {
         return "Short description";

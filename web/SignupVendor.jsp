@@ -1,6 +1,6 @@
 <%-- 
-    Document   : products
-    Created on : 13-Sep-2020, 13:10:26
+    Document   : SignupVendor
+    Created on : 15-Oct-2020, 15:48:53
     Author     : Randika
 --%>
 
@@ -42,7 +42,7 @@
           <li class="nav-item active ">
             <a class="nav-link" href="#">
               <i class="material-icons">person</i>
-              <p>Product Management</p>
+              <p>Vendor Sign Up</p>
             </a>
           </li>
           <!-- <li class="nav-item active-pro ">
@@ -59,7 +59,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Inventory Management</a>
+            <a class="navbar-brand" href="javascript:void(0)">Vendor Management</a>
           </div>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
@@ -79,77 +79,49 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Insert Product</h4>
+                  <h4 class="card-title">Vendor Sign Up</h4>
+                  <p class="card-category">Enter new Vendor</p>
                 </div>
                 <div class="card-body">
-                  <form action="ProductsHandler" name="create" method="post">
+                  <form action="VendorHandler" method="post">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Product Code</label>
-                          <input type="text" class="form-control" id="produtCode" name="produtCode">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Product Name</label>
-                          <input type="text" class="form-control" id="productName" name="productName">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Quantity</label>
-                          <input type="text" class="form-control" id="productStockInHand" name="productStockInHand">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Per item Price</label>
-                          <input type="text" class="form-control" id="price" name="price">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Catergory</label>
-                          <input type="text" class="form-control" id="category" name="category">
+                          <label class="bmd-label-floating">Vendor Name</label>
+                          <input type="text" class="form-control" id="vendorName" name="vendorName">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Description</label>
-                          <input type="text" class="form-control" id="productDesc" name="productDesc">
+                          <label class="bmd-label-floating">Vendor Contact No</label>
+                          <input type="text" class="form-control" id="vendorPhone" name="vendorPhone">
                         </div>
                       </div>
                     </div>
-                    <Input type="submit" class="btn btn-primary pull-right" value ="Add" name ="create">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Vendor Address</label>
+                          <input type="text" class="form-control" id="vendorAddress" name="vendorAddress">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Vendor Email</label>
+                          <input type="text" class="form-control" id="vendorEmail" name="vendorEmail"> 
+                        </div>
+                      </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary pull-right" name="create" value="Add" >
                     <div class="clearfix"></div>
                   </form>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="#pablo">
-                    <img class="img" src="./assets/img/User-CEO.png" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-category">Vendor</h6>
-                  <h4 class="card-title">Vendor Name will appear here</h4>
-                  <p class="card-description">
-                   Vendor who has registered in the system will appear here
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Change Vendor</a>
                 </div>
               </div>
             </div>

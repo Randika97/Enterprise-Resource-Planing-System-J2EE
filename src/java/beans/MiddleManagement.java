@@ -9,9 +9,9 @@ import java.io.Serializable;
  *
  * @author ALPHA
  */
-public class Emp_beans implements Serializable{
-    
-    private String Emp_id;
+public class MiddleManagement implements Serializable{
+   
+    private String Mang_id;
     private String Username;
     private String Emali;
     private String First_Name;
@@ -23,17 +23,17 @@ public class Emp_beans implements Serializable{
     private String Discription;
 
     /**
-     * @return the Emp_id
+     * @return the Mang_id
      */
-    public String getEmp_id() {
-        return Emp_id;
+    public String getMang_id() {
+        return Mang_id;
     }
 
     /**
-     * @param Emp_id the Emp_id to set
+     * @param Mang_id the Mang_id to set
      */
-    public void setEmp_id(String Emp_id) {
-        this.Emp_id = Emp_id;
+    public void setMang_id(String Mang_id) {
+        this.Mang_id = Mang_id;
     }
 
     /**
@@ -161,7 +161,5 @@ public class Emp_beans implements Serializable{
     public void setDiscription(String Discription) {
         this.Discription = Discription;
     }
-    
-    
     
 }

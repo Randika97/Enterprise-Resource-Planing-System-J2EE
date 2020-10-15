@@ -5,9 +5,9 @@
  */
 package controller;
 
-import beans.Ceo_beans;
 import java.io.IOException;
 import java.io.PrintWriter;
+import beans.Employee;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,19 +19,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ALPHA
  */
-@WebServlet(name = "Signup_Ceo", urlPatterns = {"/Signup_Ceo"})
-public class Signup_Ceo extends HttpServlet {
-
-
-   
+@WebServlet(name = "Signup_Emp", urlPatterns = {"/Signup_Emp"})
+public class SignupEmp extends HttpServlet {
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
-         try{
+        try{
         int count = 0;
-        Ceo_beans bean = new Ceo_beans();
-        bean.setCeo_id(request.getParameter("Ceo_id"));
+        Employee bean = new Employee();
+        bean.setEmp_id(request.getParameter("Emp_id"));
         bean.setUsername(request.getParameter("username"));
         bean.setFirst_Name(request.getParameter("fname"));
         bean.setLast_Name(request.getParameter("lname"));
@@ -42,7 +39,7 @@ public class Signup_Ceo extends HttpServlet {
         bean.setAge(request.getParameter("age"));
         bean.setDiscription(request.getParameter("desc"));
         
-        String Ceo_id= bean.getCeo_id();
+        String Emp_id= bean.getEmp_id();
         String Username = bean.getUsername();
         String FirstName= bean.getFirst_Name();
         String LastName = bean.getLast_Name();
@@ -53,21 +50,21 @@ public class Signup_Ceo extends HttpServlet {
         String Age = bean.getAge();
         String Desc = bean.getDiscription();
         
-        ResultSet search = DB.search("SELECT COUNT(*) FROM `ceo`");
+        ResultSet search = DB.search("SELECT COUNT(*) FROM `employee`");
             if (search.next()) {
                 count += Integer.parseInt(search.getString(1));
             }
             String id = "" + count;
             //insert values into database
-            DB.iud("INSERT INTO `ceo`(`id`,`Ceo_id`, `UserName`, `Email`, `FirstName`, `LastName`, `Adress`, `Password`, `PhoneNumber`, `Age`,`Description`) VALUES ('"+id+"','"+Ceo_id+"','"+Username+"','"+Email+"','"+FirstName+"','"+LastName+"','"+Adress+"','"+Password+"','"+Pno+"','"+Age+"','"+Desc+"')");
-            response.sendRedirect("Ceo_Login.jsp");
+            DB.iud("INSERT INTO `employee`(`id`,`Emp_id`, `UserName`, `Email`, `FirstName`, `LastName`, `Adress`, `Password`, `PhoneNumber`, `Age`,`Description`) VALUES ('"+id+"','"+Emp_id+"','"+Username+"','"+Email+"','"+FirstName+"','"+LastName+"','"+Adress+"','"+Password+"','"+Pno+"','"+Age+"','"+Desc+"')");
+            response.sendRedirect("Emp_Login.jsp");
         } catch (Exception ex) {
             PrintWriter writer = response.getWriter();
             writer.print(ex);
         }
-        
     }
 
+  
     @Override
     public String getServletInfo() {
         return "Short description";

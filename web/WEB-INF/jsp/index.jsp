@@ -16,7 +16,10 @@
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
         <a href="products.jsp">Let's Enter some products</a>
-        <form action="Products_handler" method="post">
+        <form action="ProductsHandler" method="post">
+            <input type="submit" name ="view" value="view">
+        </form>
+         <form action="VendorHandler" method="post">
             <input type="submit" name ="view" value="view">
         </form>
     </body>

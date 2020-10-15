@@ -9,9 +9,9 @@ import java.io.Serializable;
  *
  * @author ALPHA
  */
-public class Mang_beans implements Serializable{
-   
-    private String Mang_id;
+public class TopManagement implements Serializable {
+    
+    private String Ceo_id;
     private String Username;
     private String Emali;
     private String First_Name;
@@ -23,17 +23,17 @@ public class Mang_beans implements Serializable{
     private String Discription;
 
     /**
-     * @return the Mang_id
+     * @return the Ceo_id
      */
-    public String getMang_id() {
-        return Mang_id;
+    public String getCeo_id() {
+        return Ceo_id;
     }
 
     /**
-     * @param Mang_id the Mang_id to set
+     * @param Ceo_id the Ceo_id to set
      */
-    public void setMang_id(String Mang_id) {
-        this.Mang_id = Mang_id;
+    public void setCeo_id(String Ceo_id) {
+        this.Ceo_id = Ceo_id;
     }
 
     /**
@@ -161,5 +161,4 @@ public class Mang_beans implements Serializable{
     public void setDiscription(String Discription) {
         this.Discription = Discription;
     }
-    
 }

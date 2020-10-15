@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author Randika
  */
 @WebServlet(name = "Products_handler", urlPatterns = {"/Products_handler"})
-public class Products_handler extends HttpServlet {
+public class ProductsHandler extends HttpServlet {
     int count=0;
     Products p = new Products();
     @Override
