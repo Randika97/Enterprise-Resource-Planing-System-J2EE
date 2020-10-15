@@ -9,9 +9,9 @@ import java.io.Serializable;
  *
  * @author ALPHA
  */
-public class Ceo_beans implements Serializable {
+public class Employee implements Serializable{
     
-    private String Ceo_id;
+    private String Emp_id;
     private String Username;
     private String Emali;
     private String First_Name;
@@ -23,17 +23,17 @@ public class Ceo_beans implements Serializable {
     private String Discription;
 
     /**
-     * @return the Ceo_id
+     * @return the Emp_id
      */
-    public String getCeo_id() {
-        return Ceo_id;
+    public String getEmp_id() {
+        return Emp_id;
     }
 
     /**
-     * @param Ceo_id the Ceo_id to set
+     * @param Emp_id the Emp_id to set
      */
-    public void setCeo_id(String Ceo_id) {
-        this.Ceo_id = Ceo_id;
+    public void setEmp_id(String Emp_id) {
+        this.Emp_id = Emp_id;
     }
 
     /**
@@ -161,4 +161,7 @@ public class Ceo_beans implements Serializable {
     public void setDiscription(String Discription) {
         this.Discription = Discription;
     }
+    
+    
+    
 }

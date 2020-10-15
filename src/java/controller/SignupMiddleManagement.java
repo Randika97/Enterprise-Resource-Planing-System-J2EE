@@ -5,7 +5,7 @@
  */
 package controller;
 
-import beans.Mang_beans;
+import beans.MiddleManagement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author ALPHA
  */
 @WebServlet(name = "Signup_Mang", urlPatterns = {"/Signup_Mang"})
-public class Signup_Mang extends HttpServlet {
+public class SignupMiddleManagement extends HttpServlet {
 
    
 
@@ -31,7 +31,7 @@ public class Signup_Mang extends HttpServlet {
        
         try{
         int count = 0;
-        Mang_beans bean = new Mang_beans();
+        MiddleManagement bean = new MiddleManagement();
         bean.setMang_id(request.getParameter("Mang_id"));
         bean.setUsername(request.getParameter("username"));
         bean.setFirst_Name(request.getParameter("fname"));

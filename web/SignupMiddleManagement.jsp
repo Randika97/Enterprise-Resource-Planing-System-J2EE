@@ -100,7 +100,7 @@
                   <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                  <form action= "Signup_Mang"  method="POST">
+                  <form action= "SignupMiddleManagement"  method="POST">
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">

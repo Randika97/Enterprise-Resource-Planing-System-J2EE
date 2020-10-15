@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Randika
  */
 @WebServlet(name = "Vendor_handler", urlPatterns = {"/Vendor_handler"})
-public class Vendor_handler extends HttpServlet {
+public class VendorHandler extends HttpServlet {
     int count=0;
     Vendor vendorGlobal = new Vendor();
     @Override
@@ -41,18 +41,18 @@ public class Vendor_handler extends HttpServlet {
                 
                 if(request.getParameter("create")!= null && request.getParameter("create").equals("Add")){
                     vendorGlobal.setVendorName(request.getParameter("vendorName"));
-                    vendorGlobal.setVendorId(request.getParameter("vendorId"));
-                    vendorGlobal.setPhone(request.getParameter("vendorPhone"));
-                    vendorGlobal.setAddress(request.getParameter("vendorAddress"));         
+                    vendorGlobal.setVendorPhone(request.getParameter("vendorPhone"));
+                    vendorGlobal.setVendorAddress(request.getParameter("vendorAddress")); 
+                    vendorGlobal.setVendorEmail(request.getParameter("vendorEmail"));
                     vendorInsert();
                     RequestDispatcher r = request.getRequestDispatcher("/redirect.jsp");
                     r.forward(request, response);
                 }
                 else if(request.getParameter("update")!= null && request.getParameter("update").equals("update")){
                     vendorGlobal.setVendorName(request.getParameter("vendorName"));
-                    vendorGlobal.setVendorId(request.getParameter("vendorId"));
-                    vendorGlobal.setPhone(request.getParameter("vendorPhone"));
-                    vendorGlobal.setAddress(request.getParameter("vendorAddress")); 
+                    vendorGlobal.setVendorPhone(request.getParameter("vendorPhone"));
+                    vendorGlobal.setVendorAddress(request.getParameter("vendorAddress")); 
+                    vendorGlobal.setVendorEmail(request.getParameter("vendorEmail"));
                     vendorUpdate();
                     RequestDispatcher r = request.getRequestDispatcher("/redirect.jsp");
                     r.forward(request, response);
@@ -68,7 +68,7 @@ public class Vendor_handler extends HttpServlet {
                     vendorView();
                     List<Vendor> vendor = vendorView();
                     request.setAttribute("vendors", vendor);
-                    RequestDispatcher r = request.getRequestDispatcher("/productView.jsp");
+                    RequestDispatcher r = request.getRequestDispatcher("/vendorView.jsp");
                     r.forward(request, response);
                 }
             }catch (Exception ex) {
@@ -80,17 +80,17 @@ public class Vendor_handler extends HttpServlet {
             
                try{
                    //getting values from beans
-                    String vendorId = vendorGlobal.getVendorId();
                     String vendorName = vendorGlobal.getVendorName();
-                    String vendorPhone = vendorGlobal.getPhone();
-                    String vendorAddress = vendorGlobal.getAddress();
+                    String vendorPhone = vendorGlobal.getVendorPhone();
+                    String vendorAddress = vendorGlobal.getVendorAddress();
+                    String vendorEmail = vendorGlobal.getVendorEmail();
                     //Auto_Increament by manually
                     ResultSet search = DB.search("SELECT COUNT(*) FROM `vendor`");
                         if (search.next()) {
                              count += Integer.parseInt(search.getString(1));
                         }
                         int id =count;
-                        DB.iud("INSERT INTO `vendor`(`id`,` vendorId`,`vendorName`,`vendorPhone`, `vendorAddress`) VALUES ('"+id+"','"+vendorId+"','"+vendorName+"','"+vendorPhone+"','"+vendorAddress+"')");
+                        DB.iud("INSERT INTO `vendor`(`vendorId`,`vendorName`,`vendorPhone`, `vendorAddress` , `vendorEmail`) VALUES ('"+id+"','"+vendorName+"','"+vendorPhone+"','"+vendorAddress+"','"+vendorEmail+"')");
                }catch(Exception e){
                     System.out.println(e);
                }
@@ -102,9 +102,10 @@ public class Vendor_handler extends HttpServlet {
                 //getting values from beans
                 String vendorId = vendorGlobal.getVendorId();
                 String vendorName = vendorGlobal.getVendorName();
-                String vendorPhone = vendorGlobal.getPhone();
-                String vendorAddress = vendorGlobal.getAddress();
-                DB.iud("UPDATE `vendor` SET `vendorId`='"+vendorId+"',`vendorName`='"+vendorName+"',`vendorPhone`='"+vendorPhone+"',`vendorAddress`='"+vendorAddress+"' WHERE `vendorId` ='"+vendorId+"'");
+                String vendorPhone = vendorGlobal.getVendorPhone();
+                String vendorAddress = vendorGlobal.getVendorAddress();
+                String vendorEmail = vendorGlobal.getVendorEmail();
+                DB.iud("UPDATE `vendor` SET `vendorName`='"+vendorName+"',`vendorPhone`='"+vendorPhone+"',`vendorAddress`='"+vendorAddress+"' , `vendorEmail`='"+vendorEmail+"' WHERE `vendorId` ='"+vendorId+"'");
 
             }catch(Exception e){
                System.out.println(e);
@@ -120,10 +121,11 @@ public class Vendor_handler extends HttpServlet {
         ResultSet rs = DB.search("SELECT * FROM `vendor`");
         while (rs.next()) {
             Vendor v = new Vendor();
-            v.setVendorId(rs.getString(2));
-            v.setVendorName(rs.getString(3));
-            v.setPhone((rs.getString(4)));
-            v.setAddress((rs.getString(5)));
+            v.setVendorId(rs.getString(1));
+            v.setVendorName(rs.getString(2));
+            v.setVendorPhone((rs.getString(3)));
+            v.setVendorAddress((rs.getString(4)));
+            v.setVendorEmail((rs.getString(5)));
             progs.add(v);
         }
         return progs;
