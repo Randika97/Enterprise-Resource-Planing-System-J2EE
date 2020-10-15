@@ -10,26 +10,13 @@ package beans;
  * @author Randika
  */
 public class Vendor {
-    
-    private int id;
+
     private String vendorId;
     private String vendorName;
-    private String phone;
-    private String address;
+    private String vendorPhone;
+    private String vendorAddress;
+    private String vendorEmail;
 
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
 
     /**
      * @return the vendorId
@@ -60,31 +47,46 @@ public class Vendor {
     }
 
     /**
-     * @return the phone
+     * @return the vendorPhone
      */
-    public String getPhone() {
-        return phone;
+    public String getVendorPhone() {
+        return vendorPhone;
     }
 
     /**
-     * @param phone the phone to set
+     * @param vendorPhone the vendorPhone to set
      */
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setVendorPhone(String vendorPhone) {
+        this.vendorPhone = vendorPhone;
     }
 
     /**
-     * @return the address
+     * @return the vendorAddress
      */
-    public String getAddress() {
-        return address;
+    public String getVendorAddress() {
+        return vendorAddress;
     }
 
     /**
-     * @param address the address to set
+     * @param vendorAddress the vendorAddress to set
      */
-    public void setAddress(String address) {
-        this.address = address;
+    public void setVendorAddress(String vendorAddress) {
+        this.vendorAddress = vendorAddress;
     }
+
+    /**
+     * @return the vendorEmail
+     */
+    public String getVendorEmail() {
+        return vendorEmail;
+    }
+
+    /**
+     * @param vendorEmail the vendorEmail to set
+     */
+    public void setVendorEmail(String vendorEmail) {
+        this.vendorEmail = vendorEmail;
+    }
+
     
 }
