@@ -46,7 +46,7 @@ public class LoginEmp extends HttpServlet {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", UserName);
-                RequestDispatcher r = request.getRequestDispatcher("Emp_dashboard.jsp?message=Hello+" + UserName + "");
+                RequestDispatcher r = request.getRequestDispatcher("dashboardEmp.jsp?message=Hello+" + UserName + "");
                 r.forward(request, response);
                 
             } else {
