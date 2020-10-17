@@ -47,11 +47,11 @@ public class LoginTopManagement extends HttpServlet {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", UserName);
-                RequestDispatcher r = request.getRequestDispatcher("Ceo_dashboard.jsp?message=Hello+" + UserName + "");
+                RequestDispatcher r = request.getRequestDispatcher("dashboardTopManagement.jsp?message=Hello+" + UserName + "");
                 r.forward(request, response);
                 
             } else {
-                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ceo_Login.jsp?message=<font color=red>Either user name or password is wrong.</font>");
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginTopManagement.jsp?message=<font color=red>Either user name or password is wrong.</font>");
 			rd.include(request, response);
             }
         } catch (Exception ex) {

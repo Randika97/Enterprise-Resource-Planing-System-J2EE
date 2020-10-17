@@ -46,11 +46,11 @@ public class LoginMiddleManagement extends HttpServlet {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", UserName);
-                RequestDispatcher r = request.getRequestDispatcher("Mang_Dashboard.jsp?message=Hello+" + UserName + "");
+                RequestDispatcher r = request.getRequestDispatcher("dashboardMiddleManagement.jsp?message=Hello+" + UserName + "");
                 r.forward(request, response);
                 
             } else {
-                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Mang_Login.jsp?message=<font color=red>Either user name or password is wrong.</font>");
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginMiddleManagement.jsp?message=<font color=red>Either user name or password is wrong.</font>");
 			rd.include(request, response);
             }
         } catch (Exception ex) {

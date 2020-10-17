@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ProductsHandler", urlPatterns = {"/ProductsHandler"})
 public class ProductsHandler extends HttpServlet {
     
-        int count=0;
+    int count=0;
     Products p = new Products();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
