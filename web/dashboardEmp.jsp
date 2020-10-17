@@ -130,6 +130,7 @@
                 <div class="card-header card-header-success">
                   <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
+                  <form action="ProductsHandler" method="POST">
                 <div class="card-body">
                   <h4 class="card-title">Inverntory Management</h4>
                   <p class="card-category">
@@ -139,10 +140,11 @@
                   <div class="stats">
                     <i class="material-icons">access_time</i> updated 4 minutes ago
                   </div>
+                    <input type="submit" class="btn btn-primary" value="view" name="view">
                 </div>
+                </form>
               </div>
             </div>
-           
           </div>
 
               </div>
