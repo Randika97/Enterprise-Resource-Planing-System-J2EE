@@ -54,13 +54,13 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item ">
-            <a class="nav-link" href="./SignIn.jsp">
+            <a class="nav-link" href="./signIn.jsp">
               <i class="material-icons">dashboard</i>
               <p>Sign In</p>
             </a>
           </li>
           <li class="nav-item active  ">
-            <a class="nav-link" href="./Signup.jsp">
+            <a class="nav-link" href="./signUp.jsp">
               <i class="material-icons">person</i>
               <p>Sign Up</p>
             </a>

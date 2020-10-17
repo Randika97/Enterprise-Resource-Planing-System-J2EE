@@ -119,7 +119,7 @@
                   <h4 class="card-title">Manager Sign In</h4>
                 </div>
                 <div class="card-footer">
-                  <a href="./loginMiddleManagements.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
+                  <a href="./loginMiddleManagement.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
                   <div class="stats">
                     <i class="material-icons">access_time</i> Last Loggin 2 days ago
                   </div>
@@ -178,8 +178,7 @@
             </ul>
           </nav>
           <div class="copyright float-right" id="date">
-            , made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+            <a href="http://13.212.144.97" target="_blank">Shredder</a> by Stark Inc.
           </div>
         </div>
       </footer>
