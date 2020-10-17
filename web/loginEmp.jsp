@@ -100,7 +100,7 @@
                   <p class="card-category">Enter Your Credintials</p>
                 </div>
                 <div class="card-body">
-                  <form action= "Login"  method="POST">
+                  <form action= "LoginEmp"  method="POST">
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">

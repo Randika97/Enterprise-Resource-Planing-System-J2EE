@@ -5,7 +5,7 @@
  */
 package controller;
 
-import beans.loginbeans;
+import beans.MiddleManagement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -20,19 +20,17 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ALPHA
+ * @author Randika
  */
-@WebServlet(name = "Login_Mang", urlPatterns = {"/Login_Mang"})
+@WebServlet(name = "LoginMiddleManagement", urlPatterns = {"/LoginMiddleManagement"})
 public class LoginMiddleManagement extends HttpServlet {
-
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
          try {
             
-            loginbeans ub = new loginbeans();
+            MiddleManagement ub = new MiddleManagement();
             ub.setUsername(request.getParameter("username"));
             ub.setPassword(request.getParameter("pass"));
             
@@ -60,11 +58,4 @@ public class LoginMiddleManagement extends HttpServlet {
              out.print(ex);
         }
     }
-
-  
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
