@@ -46,11 +46,11 @@ public class LoginEmp extends HttpServlet {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", UserName);
-                RequestDispatcher r = request.getRequestDispatcher("Emp_dashboard.jsp?message=Hello+" + UserName + "");
+                RequestDispatcher r = request.getRequestDispatcher("dashboardEmp.jsp?message=Hello+" + UserName + "");
                 r.forward(request, response);
                 
             } else {
-                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Emp_Login.jsp?message=<font color=red>Either user name or password is wrong.</font>");
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginEmp.jsp?message=<font color=red>Either user name or password is wrong.</font>");
 			rd.include(request, response);
             }
         } catch (Exception ex) {
