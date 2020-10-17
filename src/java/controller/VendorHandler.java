@@ -5,7 +5,6 @@
  */
 package controller;
 
-
 import beans.Vendor;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Randika
  */
-@WebServlet(name = "Vendor_handler", urlPatterns = {"/Vendor_handler"})
+@WebServlet(name = "VendorHandler", urlPatterns = {"/VendorHandler"})
 public class VendorHandler extends HttpServlet {
     int count=0;
     Vendor vendorGlobal = new Vendor();
@@ -131,9 +130,5 @@ public class VendorHandler extends HttpServlet {
         return progs;
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

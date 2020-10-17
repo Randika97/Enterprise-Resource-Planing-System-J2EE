@@ -15,7 +15,7 @@
                 the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
-        <a href="products.jsp">Let's Enter some products</a>
+        <a href="productsInsert.jsp">Let's Enter some products</a>
         <form action="ProductsHandler" method="post">
             <input type="submit" name ="view" value="view">
         </form>
