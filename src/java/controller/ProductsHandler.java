@@ -6,6 +6,7 @@
 package controller;
 
 import beans.Products;
+import beans.Vendor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductsHandler extends HttpServlet {
     
     int count=0;
+    int vendorId;
     Products p = new Products();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -47,9 +49,11 @@ public class ProductsHandler extends HttpServlet {
                     p.setPrice(Integer.parseInt(request.getParameter("price")));
                     p.setCategory(request.getParameter("category"));
                     p.setProductDesc(request.getParameter("productDesc"));
-                    productInsert();
+                    vendorId = Integer.parseInt(request.getParameter("vid"));
+                    productInsert(vendorId);
                     RequestDispatcher r = request.getRequestDispatcher("/redirect.jsp");
                     r.forward(request, response);
+                    System.out.print("Product added successfully");
                 }
                 else if(request.getParameter("update")!= null && request.getParameter("update").equals("update")){
                     p.setProdutCode(request.getParameter("produtCode"));
@@ -61,6 +65,7 @@ public class ProductsHandler extends HttpServlet {
                     productUpdate();
                     RequestDispatcher r = request.getRequestDispatcher("/redirect.jsp");
                     r.forward(request, response);
+                    System.out.print("Product updated successfully");
                 }
                 else if(request.getParameter("delete")!= null && request.getParameter("delete").equals("delete")){
                    String id = (String) request.getAttribute("proid");
@@ -69,12 +74,12 @@ public class ProductsHandler extends HttpServlet {
                     r.forward(request, response);
                 }
                 else if(request.getParameter("view")!= null && request.getParameter("view").equals("view")){
-                    System.out.println("view fired");
                     productView();
                     List<Products> product = productView();
                     request.setAttribute("products", product);
                     RequestDispatcher r = request.getRequestDispatcher("/productView.jsp");
                     r.forward(request, response);
+                    System.out.println("Products rendered");
                 }
             }catch (Exception ex) {
             PrintWriter writer = response.getWriter();
@@ -82,10 +87,11 @@ public class ProductsHandler extends HttpServlet {
         }
 
     }
-        public void productInsert(){
+        public void productInsert(int vid){
             
                try{
                    //getting values from beans
+                    System.out.print(vid);
                     String productCode = p.getProdutCode();
                     String productName = p.getProductName();
                     int sih = p.getProductStockInHand();
@@ -109,6 +115,7 @@ public class ProductsHandler extends HttpServlet {
             try{
                 //getting values from beans
                 int id = 0;
+                
                 String productCode = p.getProdutCode();
                 String productName = p.getProductName();
                 int sih = p.getProductStockInHand();
@@ -133,6 +140,7 @@ public class ProductsHandler extends HttpServlet {
         public List<Products> productView() throws Exception {
         ArrayList<Products> progs = new ArrayList<Products>();
         ResultSet rs = DB.search("SELECT * FROM `products`");
+
         while (rs.next()) {
             Products view = new Products();
             view.setId(Integer.parseInt(rs.getString(1)));
@@ -146,5 +154,6 @@ public class ProductsHandler extends HttpServlet {
         }
         return progs;
     }
+
 
 }

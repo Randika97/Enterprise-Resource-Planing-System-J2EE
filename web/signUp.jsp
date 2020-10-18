@@ -54,7 +54,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item ">
-            <a class="nav-link" href="./signIn.jsp">
+            <a class="nav-link" href="./redirect.jsp">
               <i class="material-icons">dashboard</i>
               <p>Sign In</p>
             </a>
@@ -119,7 +119,7 @@
                    <h4 class="card-title">Employee Sign Up</h4> 
                 </div>
                 <div class="card-footer">
-                  <a href="./Signup_Emp.jsp"><button class="btn btn-primary pull-right">Sign Up</button></a>
+                  <a href="./signupEmp.jsp"><button class="btn btn-primary pull-right">Sign Up</button></a>
                   <div class="stats">
                     <i class="material-icons">warning</i> Only For Employees
                   </div>
@@ -137,7 +137,7 @@
                   <h4 class="card-title">Manager Sign Up</h4>
                 </div>
                 <div class="card-footer">
-                  <a href="./Signup_Mang.jsp"><button class="btn btn-primary pull-right">Sign Up</button></a>
+                  <a href="./signupMiddleManagement.jsp"><button class="btn btn-primary pull-right">Sign Up</button></a>
                   <div class="stats">
                     <i class="material-icons">warning</i> Only for Managers
                   </div>
@@ -155,7 +155,7 @@
                   <h4 class="card-title">CEO Sign Up</h4>
                 </div>
                 <div class="card-footer">
-                  <a href="./Signup_Ceo.jsp"><button class="btn btn-primary pull-right">Sign Up</button></a>
+                  <a href="./signupTopManagement.jsp"><button class="btn btn-primary pull-right">Sign Up</button></a>
                   <div class="stats">
                     <i class="material-icons">warning</i> Only For CEO 
                   </div>

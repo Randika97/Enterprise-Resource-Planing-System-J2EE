@@ -78,7 +78,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="./Login Page.html">
+                <a class="nav-link" href="./redirect.jsp">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
@@ -138,7 +138,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
+                          <label class="bmd-label-floating">Address</label>
                           <input type="text" name="adress" class="form-control">
                         </div>
                       </div>

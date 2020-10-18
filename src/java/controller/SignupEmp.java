@@ -5,9 +5,9 @@
  */
 package controller;
 
+import beans.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
-import beans.Employee;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,57 +17,52 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ALPHA
+ * @author Randika
  */
-@WebServlet(name = "Signup_Emp", urlPatterns = {"/Signup_Emp"})
+@WebServlet(name = "SignupEmp", urlPatterns = {"/SignupEmp"})
 public class SignupEmp extends HttpServlet {
-    
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
+ try{
         int count = 0;
-        Employee bean = new Employee();
-        bean.setEmp_id(request.getParameter("Emp_id"));
-        bean.setUsername(request.getParameter("username"));
-        bean.setFirst_Name(request.getParameter("fname"));
-        bean.setLast_Name(request.getParameter("lname"));
-        bean.setEmali(request.getParameter("email"));
-        bean.setAdress(request.getParameter("adress"));
-        bean.setPassword(request.getParameter("password"));
-        bean.setPhoneNum(request.getParameter("pno"));
-        bean.setAge(request.getParameter("age"));
-        bean.setDiscription(request.getParameter("desc"));
+        String roll = "Employee";
+        Users user = new Users();
+        user.setUserName(request.getParameter("username"));
+        user.setFirstName(request.getParameter("fname"));
+        user.setLastName(request.getParameter("lname"));
+        user.setEmali(request.getParameter("email"));
+        user.setAddress(request.getParameter("adress"));
+        user.setPassword(request.getParameter("password"));
+        user.setPhoneNo(request.getParameter("pno"));
+        user.setAge(request.getParameter("age"));
+        user.setDiscription(request.getParameter("desc"));
         
-        String Emp_id= bean.getEmp_id();
-        String Username = bean.getUsername();
-        String FirstName= bean.getFirst_Name();
-        String LastName = bean.getLast_Name();
-        String Email = bean.getEmali();
-        String Adress = bean.getAdress();
-        String Password = bean.getPassword();
-        String Pno = bean.getPhoneNum();
-        String Age = bean.getAge();
-        String Desc = bean.getDiscription();
+        String userName = user.getUserName();
+        String firstName= user.getFirstName();
+        String lastName = user.getLastName();
+        String email = user.getEmali();
+        String address = user.getAddress();
+        String password = user.getPassword();
+        String pNo = user.getPhoneNo();
+        String age = user.getAge();
+        String desc = user.getDiscription();
         
-        ResultSet search = DB.search("SELECT COUNT(*) FROM `employee`");
+        ResultSet search = DB.search("SELECT COUNT(*) FROM `users`");
             if (search.next()) {
                 count += Integer.parseInt(search.getString(1));
             }
             String id = "" + count;
             //insert values into database
-            DB.iud("INSERT INTO `employee`(`id`,`Emp_id`, `UserName`, `Email`, `FirstName`, `LastName`, `Adress`, `Password`, `PhoneNumber`, `Age`,`Description`) VALUES ('"+id+"','"+Emp_id+"','"+Username+"','"+Email+"','"+FirstName+"','"+LastName+"','"+Adress+"','"+Password+"','"+Pno+"','"+Age+"','"+Desc+"')");
-            response.sendRedirect("Emp_Login.jsp");
+            DB.iud("INSERT INTO `users`(`id`,`userName`,`email`,`password`,`firstName`,`lastName`,`phoneNo`,`age`,`roll`,`description`,`address`) VALUES ('"+id+"','"+userName+"','"+email+"','"+password+"','"+firstName+"','"+lastName+"','"+pNo+"','"+age+"','"+roll+"','"+desc+"','"+address+"')");
+            response.sendRedirect("redirect.jsp");
         } catch (Exception ex) {
             PrintWriter writer = response.getWriter();
             writer.print(ex);
         }
     }
 
-  
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
