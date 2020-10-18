@@ -5,11 +5,10 @@
  */
 package controller;
 
-import beans.loginbeans;
+import beans.Employee;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-//import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,18 +20,17 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ALPHA
+ * @author Randika
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
-
-  
-    @Override
+@WebServlet(name = "LoginEmp", urlPatterns = {"/LoginEmp"})
+public class LoginEmp extends HttpServlet {
+    
+ @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          try {
             
-            loginbeans ub = new loginbeans();
+            Employee ub = new Employee();
             ub.setUsername(request.getParameter("username"));
             ub.setPassword(request.getParameter("pass"));
             
@@ -48,7 +46,7 @@ public class Login extends HttpServlet {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", UserName);
-                RequestDispatcher r = request.getRequestDispatcher("Emp_dashboard.jsp?message=Hello+" + UserName + "");
+                RequestDispatcher r = request.getRequestDispatcher("dashboardEmp.jsp?message=Hello+" + UserName + "");
                 r.forward(request, response);
                 
             } else {
@@ -60,11 +58,4 @@ public class Login extends HttpServlet {
              out.print(ex);
         }
     }
-
-    
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

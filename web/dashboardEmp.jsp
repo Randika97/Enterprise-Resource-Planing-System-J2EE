@@ -1,24 +1,10 @@
 <%-- 
-    Document   : SignIn
-    Created on : Sep 19, 2020, 1:59:58 PM
+    Document   : dashbord
+    Created on : Sep 13, 2020, 7:37:46 PM
     Author     : ALPHA
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--
-=========================================================
-* Material Dashboard Dark Edition - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,16 +40,18 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="./SignIn.jsp">
+            <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
-              <p>Sign In</p>
+              <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./Signup.jsp">
+            <a class="nav-link" href="./user.html">
               <i class="material-icons">person</i>
-              <p>Sign Up</p>
+              <p>User Profile</p>
             </a>
+          </li>
+         
           <!-- <li class="nav-item active-pro ">
                 <a class="nav-link" href="./upgrade.html">
                     <i class="material-icons">unarchive</i>
@@ -78,7 +66,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Welcome to Shredder</a>
+            <a class="navbar-brand" href="javascript:void(0)">Employee Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -88,10 +76,41 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end">
             <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
             </form>
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0)">
+                  <em>Hello <%=session.getAttribute("user")%></em>
+                  <p class="d-lg-none d-md-block">
+                    Stats
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">notifications</i>
+                  <span class="notification">5</span>
+                  <p class="d-lg-none d-md-block">
+                    Some Actions
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
+                  <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
+                  <a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
+                  <a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
+                  <a class="dropdown-item" href="javascript:void(0)">Another One</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./Login Page.html">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
@@ -109,56 +128,21 @@
             <div class="col-xl-4 col-lg-12">
               <div class="card card-chart">
                 <div class="card-header card-header-success">
-                  <div class="ct-chart">
-                    <img src="./assets/img/user - employee.png" width="250px" height="200px">
-                    <br>
-                  </div>
+                  <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
+                  <form action="ProductsHandler" method="POST">
                 <div class="card-body">
-                  <h4 class="card-title">Employee Sign In</h4>
+                  <h4 class="card-title">Inverntory Management</h4>
+                  <p class="card-category">
+                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today Stock in Inverntory.</p>
                 </div>
                 <div class="card-footer">
-                  <a href="./Emp_Login.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
                   <div class="stats">
-                    <i class="material-icons">access_time</i> Logged in 10 minutes ago
+                    <i class="material-icons">access_time</i> updated 4 minutes ago
                   </div>
+                    <input type="submit" class="btn btn-primary" value="view" name="view">
                 </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" >
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./assets/img/user-manager.png" width="200px" height="200px">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Manager Sign In</h4>
-                </div>
-                <div class="card-footer">
-                  <a href="./Mang_Login.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Last Loggin 2 days ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-danger">
-                  <div class="ct-chart">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <img src="./assets/img/User-CEO.png" width="200px" height="200px">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">CEO Sign In</h4>
-                </div>
-                <div class="card-footer">
-                  <a href="./Ceo_Login.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Last Loggin 5 days ago
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

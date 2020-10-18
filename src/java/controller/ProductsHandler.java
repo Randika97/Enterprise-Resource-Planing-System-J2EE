@@ -17,14 +17,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Randika
  */
-@WebServlet(name = "Products_handler", urlPatterns = {"/Products_handler"})
+@WebServlet(name = "ProductsHandler", urlPatterns = {"/ProductsHandler"})
 public class ProductsHandler extends HttpServlet {
+    
     int count=0;
     Products p = new Products();
     @Override
@@ -108,13 +108,18 @@ public class ProductsHandler extends HttpServlet {
         public void productUpdate() throws Exception {
             try{
                 //getting values from beans
-            String productCode = p.getProdutCode();
-            String productName = p.getProductName();
-            int sih = p.getProductStockInHand();
-            int price = p.getPrice();
-            String category = p.getCategory();
-            String desc = p.getProductDesc();
-            DB.iud("UPDATE `products` SET `productName`='"+productName+"',`productStockInHand`='"+sih+"',`price`='"+price+"',`category`='"+category+"',`productDesc`='"+desc+"' WHERE `id` ='"+productCode+"'");
+                int id = 0;
+                String productCode = p.getProdutCode();
+                String productName = p.getProductName();
+                int sih = p.getProductStockInHand();
+                int price = p.getPrice();
+                String category = p.getCategory();
+                String desc = p.getProductDesc();
+                ResultSet uid = DB.search("SELECT id FROM `products` WHERE produtCode='"+productCode+"'");
+                if (uid.next()) {
+                    id= Integer.parseInt(uid.getString(1));
+                }
+                DB.iud("UPDATE `products` SET `productName`='"+productName+"',`productStockInHand`='"+sih+"',`price`='"+price+"',`category`='"+category+"',`productDesc`='"+desc+"' WHERE `id` ='"+id+"'");
                 
             }catch(Exception e)
             {
@@ -130,6 +135,7 @@ public class ProductsHandler extends HttpServlet {
         ResultSet rs = DB.search("SELECT * FROM `products`");
         while (rs.next()) {
             Products view = new Products();
+            view.setId(Integer.parseInt(rs.getString(1)));
             view.setProdutCode(rs.getString(2));
             view.setProductName(rs.getString(3));
             view.setPrice(Integer.parseInt(rs.getString(4)));

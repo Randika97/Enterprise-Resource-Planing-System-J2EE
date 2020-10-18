@@ -5,7 +5,7 @@
  */
 package controller;
 
-import beans.loginbeans;
+import beans.TopManagement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -20,19 +20,18 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ALPHA
+ * @author Randika
  */
-@WebServlet(name = "Login_Ceo", urlPatterns = {"/Login_Ceo"})
+@WebServlet(name = "LoginTopManagement", urlPatterns = {"/LoginTopManagement"})
 public class LoginTopManagement extends HttpServlet {
 
-
-    @Override
+@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       
          try {
             
-            loginbeans ub = new loginbeans();
+            TopManagement ub = new TopManagement();
             ub.setUsername(request.getParameter("username"));
             ub.setPassword(request.getParameter("pass"));
             
@@ -48,11 +47,11 @@ public class LoginTopManagement extends HttpServlet {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", UserName);
-                RequestDispatcher r = request.getRequestDispatcher("Ceo_dashboard.jsp?message=Hello+" + UserName + "");
+                RequestDispatcher r = request.getRequestDispatcher("dashboardTopManagement.jsp?message=Hello+" + UserName + "");
                 r.forward(request, response);
                 
             } else {
-                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ceo_Login.jsp?message=<font color=red>Either user name or password is wrong.</font>");
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginTopManagement.jsp?message=<font color=red>Either user name or password is wrong.</font>");
 			rd.include(request, response);
             }
         } catch (Exception ex) {
@@ -61,10 +60,4 @@ public class LoginTopManagement extends HttpServlet {
         }
         
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
