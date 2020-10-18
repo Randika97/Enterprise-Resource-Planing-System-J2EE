@@ -4,6 +4,9 @@
     Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -147,7 +150,12 @@
                   <h6 class="card-category">Vendor</h6>
                   <h4 class="card-title">Vendor Name will appear here</h4>
                   <p class="card-description">
-                   Vendor who has registered in the system will appear here
+                    <% ResultSet rs = DB.search("SELECT * FROM `vendor`"); %>
+                    <select name="vid">
+                    <%  while(rs.next()){ %>
+                        <option value="<%= rs.getString(1)%>"><%= rs.getString(2)%></option>
+                    <% } %>
+                    </select>
                   </p>
                   <a href="#pablo" class="btn btn-primary btn-round">Change Vendor</a>
                 </div>

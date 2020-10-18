@@ -68,9 +68,9 @@
             </a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="./productsInsert.jsp">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Insert Products</p>
             </a>
           </li>
           <li class="nav-item ">

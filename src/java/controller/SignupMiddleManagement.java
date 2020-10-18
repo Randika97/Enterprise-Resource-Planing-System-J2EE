@@ -61,7 +61,7 @@ public class SignupMiddleManagement extends HttpServlet {
             String id = "" + count;
             //insert values into database
             DB.iud("INSERT INTO `manager`(`id`,`Mang_id`, `UserName`, `Email`, `FirstName`, `LastName`, `Adress`, `Password`, `PhoneNumber`, `Age`,`Description`) VALUES ('"+id+"','"+Mang_id+"','"+Username+"','"+Email+"','"+FirstName+"','"+LastName+"','"+Adress+"','"+Password+"','"+Pno+"','"+Age+"','"+Desc+"')");
-            response.sendRedirect("Mang_Login.jsp");
+            response.sendRedirect("redirect.jsp");
         } catch (Exception ex) {
             PrintWriter writer = response.getWriter();
             writer.print(ex);

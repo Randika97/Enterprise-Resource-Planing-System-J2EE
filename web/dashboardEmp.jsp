@@ -145,6 +145,26 @@
                 </form>
               </div>
             </div>
+            <div class="col-xl-4 col-lg-12">
+              <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                  <div class="ct-chart" id="websiteViewsChart"></div>
+                </div>
+                  <form action="VendorHandler" method="POST">
+                <div class="card-body">
+                  <h4 class="card-title">Vendor Management</h4>
+                  <p class="card-category">Last Vendor is  something</p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">bleh</i>
+                  </div>
+                 <input type="submit" class="btn btn-primary" value="view" name="view">
+                </div>
+                </form>
+              </div>
+            </div>
+              
           </div>
 
               </div>
