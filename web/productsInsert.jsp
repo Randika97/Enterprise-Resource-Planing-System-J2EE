@@ -43,11 +43,18 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">person</i>
-              <p>Product Management</p>
+            <a class="nav-link" href="./productView.jsp">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
             </a>
           </li>
+          <li class="nav-item active ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">person</i>
+              <p>Product Insert</p>
+            </a>
+          </li>
+          
           <!-- <li class="nav-item active-pro ">
                 <a class="nav-link" href="./upgrade.html">
                     <i class="material-icons">unarchive</i>

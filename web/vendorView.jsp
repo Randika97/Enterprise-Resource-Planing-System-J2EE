@@ -57,11 +57,22 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-         
+         <li class="nav-item active ">
+            <a class="nav-link" href="./dashboardEmp.jsp">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="./vendorView.jsp">
               <i class="material-icons">content_paste</i>
               <p>Vendor Management</p>
+            </a>
+          </li>
+          <li class="nav-item active ">
+            <a class="nav-link" href="./signupVendor.jsp">
+              <i class="material-icons">content_paste</i>
+              <p>Add vendors</p>
             </a>
           </li>
         </ul>
@@ -169,7 +180,7 @@
                      <td><%=vendor.getString(3) %></td>
                      <td><%=vendor.getString(4)  %></td>
                      <td><%=vendor.getString(5) %></td>
-                     <td><a href="productsUpdate.jsp?id=<%=vendor.getString(1)%>" class="btn btn-primary btn-round" >Update</a>
+                     <td><a href="updateVendor.jsp?id=<%=vendor.getString(1)%>" class="btn btn-primary btn-round" >Update</a>
                     </td>
                   <% } %>
                     </tr>  

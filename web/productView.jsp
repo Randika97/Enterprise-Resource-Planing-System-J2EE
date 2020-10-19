@@ -57,18 +57,19 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item active ">
+            <a class="nav-link" href="./dashboardEmp.jsp">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
           <li class="nav-item active ">
             <a class="nav-link" href="./productsInsert.jsp">
               <i class="material-icons">content_paste</i>
-              <p>Product Management</p>
+              <p>Load up Inventory</p>
             </a>
           </li>
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
+          
         </ul>
       </div>
     </div>
