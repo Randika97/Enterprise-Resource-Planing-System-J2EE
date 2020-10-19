@@ -57,19 +57,13 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-         <li class="nav-item active ">
-            <a class="nav-link" href="./dashboardEmp.jsp">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item active ">
+          <li class="nav-item active">
             <a class="nav-link" href="./vendorView.jsp">
               <i class="material-icons">content_paste</i>
               <p>Vendor Management</p>
             </a>
           </li>
-          <li class="nav-item active ">
+          <li class="nav-item ">
             <a class="nav-link" href="./signupVendor.jsp">
               <i class="material-icons">content_paste</i>
               <p>Add vendors</p>
