@@ -39,6 +39,11 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item active ">
+            <a class="nav-link" href="./vendorView.jsp">
+              <i class="material-icons">person</i>
+              <p>Vendor Management</p>
+            </a>
           <li class="nav-item active ">
             <a class="nav-link" href="#">
               <i class="material-icons">person</i>

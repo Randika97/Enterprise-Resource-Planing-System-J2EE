@@ -44,6 +44,12 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item active ">
+            <a class="nav-link" href="./productView.jsp">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
           <li class="nav-item active ">
             <a class="nav-link" href="#">
               <i class="material-icons">person</i>
@@ -99,6 +105,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating"><% out.print(rs.getString(2)); %></label>
+                          <input type="hidden" name="id" value="<%=rs.getString(1) %>">
                           <input type="text" class="form-control" id="produtCode" name="produtCode" value=<% out.print(rs.getString(2)); %> >
                         </div>
                       </div>
@@ -106,8 +113,7 @@
                     <div class="row">
                       <div class="col-md-6">
                           <label class="bmd-label-floating"><% out.print(rs.getString(3)); %></label>
-                        <div class="form-group">
-                          
+                          <div class="form-group">
                           <label class="bmd-label-floating">Updated name here</label>
                           <input type="text" class="form-control" id="productName" name="productName">
                         </div>

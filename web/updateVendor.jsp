@@ -1,24 +1,12 @@
 <%-- 
-    Document   : Ceo_dashboard
-    Created on : Sep 19, 2020, 9:39:33 AM
-    Author     : ALPHA
+    Document   : updateVendor
+    Created on : 19-Oct-2020, 13:03:07
+    Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--
-=========================================================
-* Material Dashboard Dark Edition - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,20 +37,19 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="./dashboard.html" class="simple-text logo-normal">
-        Shredder
+          Shredder
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+            <li class="nav-item active ">
+            <a class="nav-link" href="./vendorView.jsp">
               <i class="material-icons">person</i>
-              <p>User Profile</p>
+              <p>Vendor Management</p>
+            </a>
+          <li class="nav-item active ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">person</i>
+              <p>Vendor update</p>
             </a>
           </li>
           <!-- <li class="nav-item active-pro ">
@@ -79,49 +66,10 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">CEO Dashboard</a>
+            <a class="navbar-brand" href="javascript:void(0)">Vendor Management</a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
           <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <button type="submit" class="btn btn-default btn-round btn-just-icon">
-                  <i class="material-icons">search</i>
-                  <div class="ripple-container"></div>
-                </button>
-              </div>
-            </form>
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
-                  <em>Hello <%=session.getAttribute("user")%></em>
-                  <p class="d-lg-none d-md-block">
-                    Stats
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
-                  <p class="d-lg-none d-md-block">
-                    Some Actions
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
-                  <a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
-                  <a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
-                  <a class="dropdown-item" href="javascript:void(0)">Another One</a>
-                </div>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="./Login Page.html">
                   <i class="material-icons">person</i>
@@ -138,58 +86,62 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Vendor update</h4>
+                  <p class="card-category">Update exist Vendor</p>
                 </div>
+                  <%
+                    String id = request.getParameter("id");
+                    ResultSet rs = DB.search("SELECT * FROM `vendor` Where `vendorId` ='"+id+"'"); 
+                    while(rs.next()){ %>
                 <div class="card-body">
-                  <h4 class="card-title">Inverntory Management</h4>
-                  <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today Stock in Inverntory.</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                  </div>
+                  <form action="VendorHandler" method="post">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label class="bmd-label-floating"><% out.print(rs.getString(2)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Update new vendor Name</label>
+                          <input type="hidden" name="id" value="<%=rs.getString(1) %>">
+                          <input type="text" class="form-control" id="vendorName" name="vendorName">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(3)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Update new vendor Contact No</label>
+                          <input type="text" class="form-control" id="vendorPhone" name="vendorPhone">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(4)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Update new vendor Address</label>
+                          <input type="text" class="form-control" id="vendorAddress" name="vendorAddress">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(5)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Update new vendor Email</label>
+                          <input type="text" class="form-control" id="vendorEmail" name="vendorEmail"> 
+                        </div>
+                      </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary pull-right" name="update" value="update" >
+                    <div class="clearfix"></div>
+                  </form>
+                  <% } %>
                 </div>
               </div>
             </div>
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Employee Management</h4>
-                  <p class="card-category">Last Employee requritment</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Last Employee requritment 2 days ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-danger">
-                  <div class="ct-chart" id="completedTasksChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Payroll Management</h4>
-                  <p class="card-category">Last Payroll Performance</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Last Payroll Process 2 days ago
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-         </div>
-        </div>
           </div>
         </div>
       </div>
@@ -271,14 +223,6 @@
           <a class="img-holder switch-trigger" href="javascript:void(0)">
             <img src="./assets/img/sidebar-4.jpg" alt="">
           </a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-        </li>
       </ul>
     </div>
   </div>
@@ -462,13 +406,7 @@
       });
     });
   </script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-    });
-  </script>
 </body>
 
 </html>
+
