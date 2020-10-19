@@ -210,7 +210,7 @@
                  <td><%=vendor.getVendorPhone() %></td>
                  <td><%=vendor.getVendorAddress()  %></td>
                  <td><%=vendor.getVendorEmail() %></td>
-                 <td><form action="Vendor_handler" method="post">
+                 <td><form action="VendorHandler" method="post">
                           <% String vendorId = vendor.getVendorId();
                              request.setAttribute("vendorId", vendorId);
                           %>

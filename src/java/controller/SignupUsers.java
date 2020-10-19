@@ -5,7 +5,7 @@
  */
 package controller;
 
-import beans.MiddleManagement;
+import beans.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -17,62 +17,52 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ALPHA
+ * @author Randika
  */
-@WebServlet(name = "Signup_Mang", urlPatterns = {"/Signup_Mang"})
-public class SignupMiddleManagement extends HttpServlet {
+@WebServlet(name = "SignupUsers", urlPatterns = {"/SignupUsers"})
+public class SignupUsers extends HttpServlet {
 
-   
-
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        
         try{
         int count = 0;
-        MiddleManagement bean = new MiddleManagement();
-        bean.setMang_id(request.getParameter("Mang_id"));
-        bean.setUsername(request.getParameter("username"));
-        bean.setFirst_Name(request.getParameter("fname"));
-        bean.setLast_Name(request.getParameter("lname"));
+        Users bean = new Users();
+        bean.setUserName(request.getParameter("username"));
+        bean.setFirstName(request.getParameter("fname"));
+        bean.setLastName(request.getParameter("lname"));
         bean.setEmali(request.getParameter("email"));
-        bean.setAdress(request.getParameter("adress"));
+        bean.setAddress(request.getParameter("adress"));
         bean.setPassword(request.getParameter("password"));
-        bean.setPhoneNum(request.getParameter("pno"));
+        bean.setPhoneNo(request.getParameter("pno"));
         bean.setAge(request.getParameter("age"));
         bean.setDiscription(request.getParameter("desc"));
         
-        String Mang_id= bean.getMang_id();
-        String Username = bean.getUsername();
-        String FirstName= bean.getFirst_Name();
-        String LastName = bean.getLast_Name();
+        String Username = bean.getUserName();
+        String FirstName= bean.getFirstName();
+        String LastName = bean.getLastName();
         String Email = bean.getEmali();
-        String Adress = bean.getAdress();
+        String Address = bean.getAddress();
         String Password = bean.getPassword();
-        String Pno = bean.getPhoneNum();
+        String Roll = bean.getRoll();
+        String Pno = bean.getPhoneNo();
         String Age = bean.getAge();
         String Desc = bean.getDiscription();
         
-        ResultSet search = DB.search("SELECT COUNT(*) FROM `manager`");
+        ResultSet search = DB.search("SELECT COUNT(*) FROM `users`");
             if (search.next()) {
                 count += Integer.parseInt(search.getString(1));
             }
             String id = "" + count;
             //insert values into database
-            DB.iud("INSERT INTO `manager`(`id`,`Mang_id`, `UserName`, `Email`, `FirstName`, `LastName`, `Adress`, `Password`, `PhoneNumber`, `Age`,`Description`) VALUES ('"+id+"','"+Mang_id+"','"+Username+"','"+Email+"','"+FirstName+"','"+LastName+"','"+Adress+"','"+Password+"','"+Pno+"','"+Age+"','"+Desc+"')");
+            DB.iud("INSERT INTO `users`(`id`,`userName`, `email`,`password`,`firstName`,`lastName`, `phoneNo`,  `age`,`roll`,`Description`,`address`) VALUES ('"+id+"','"+Username+"','"+Email+"','"+Password+"','"+FirstName+"','"+LastName+"','"+Pno+"','"+Age+"','"+Roll+"','"+Desc+"','"+Address+"')");
             response.sendRedirect("redirect.jsp");
         } catch (Exception ex) {
             PrintWriter writer = response.getWriter();
             writer.print(ex);
         }
-        
+
     }
-
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
