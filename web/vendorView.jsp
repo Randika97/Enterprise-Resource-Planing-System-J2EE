@@ -4,6 +4,8 @@
     Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page import="beans.Vendor"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -200,26 +202,18 @@
                         </th>
                       </thead>
                      <tbody>
-              <%
-            ArrayList<Vendor> vendorsdetails = (ArrayList<Vendor>) request.getAttribute("vendors");
-            for (Vendor vendor : vendorsdetails) {
-                                            %>
-               <tr>
-                 <td><%=vendor.getVendorId()  %></td>
-                 <td><%=vendor.getVendorName() %></td>
-                 <td><%=vendor.getVendorPhone() %></td>
-                 <td><%=vendor.getVendorAddress()  %></td>
-                 <td><%=vendor.getVendorEmail() %></td>
-                 <td><form action="VendorHandler" method="post">
-                          <% String vendorId = vendor.getVendorId();
-                             request.setAttribute("vendorId", vendorId);
-                          %>
-                         <input type="submit" name="delete" value="delete">
-                         <input type="submit" name="update" value="update">
-                     </form>
-                 </td>
+                     <% ResultSet vendor = DB.search("SELECT * FROM `vendor`");
+                            while(vendor.next()){ %>
+                     <tr>
+                     <td><%=vendor.getString(1) %></td>
+                     <td><%=vendor.getString(2) %></td>
+                     <td><%=vendor.getString(3) %></td>
+                     <td><%=vendor.getString(4)  %></td>
+                     <td><%=vendor.getString(5) %></td>
+                     <td><a href="productsUpdate.jsp?id=<%=vendor.getString(1)%>">See more ....</a>
+                    </td>
                   <% } %>
-               </tr>  
+                    </tr>  
              </tbody>
                     </table>
                   </div>
