@@ -92,7 +92,7 @@
                 <div class="card-body">
                   <form action="ProductsHandler" name="create" method="post">
                     <%
-                    String id=request.getParameter("id");
+                    String id = request.getParameter("id");
                     ResultSet rs = DB.search("SELECT * FROM `products` Where `id` ='"+id+"'"); 
                     while(rs.next()){ %>
                     <div class="row">
