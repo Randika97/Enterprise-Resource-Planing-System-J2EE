@@ -90,7 +90,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
+              <div>
                     <img src="./assets/img/logo_transparent.png" width="650px" height="520px">
               </div>
             </div>
@@ -107,6 +107,7 @@
                 <div class="card-body">
                     <center>
                         <h4 class="card-title">Sign In</h4>
+                        <br><br>
                         <div class="row align-items-center">
                             <div class="form-group">
                               <label class="bmd-label-floating">User Name</label>
@@ -116,9 +117,8 @@
                               <label class="bmd-label-floating">Password</label>
                               <input type="password" name="password" class="form-control">
                             </div>
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary" align="right" name="Login" value="Login">
+                                <button type="submit"  class="btn btn-primary pull-right"> Login </button>
                             </div>
                         </div>
                     </center>

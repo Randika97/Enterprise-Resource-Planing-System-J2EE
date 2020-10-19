@@ -63,7 +63,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item active ">
+          <li class="nav-item">
             <a class="nav-link" href="./productsInsert.jsp">
               <i class="material-icons">content_paste</i>
               <p>Load up Inventory</p>
