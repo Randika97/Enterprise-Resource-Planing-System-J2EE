@@ -139,6 +139,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-4 col-lg-12">
+                <a href="productView.jsp">
               <div class="card card-chart">
                 <div class="card-header card-header-success">
                   <div class="ct-chart" id="dailySalesChart"></div>
@@ -154,6 +155,7 @@
                   </div>
                 </div>
               </div>
+             </a>
             </div>
             <div class="col-xl-4 col-lg-12">
               <div class="card card-chart">
@@ -172,13 +174,14 @@
               </div>
             </div>
             <div class="col-xl-4 col-lg-12">
+              <a href="vendorView.jsp">
               <div class="card card-chart">
                 <div class="card-header card-header-danger">
                   <div class="ct-chart" id="completedTasksChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Payroll Management</h4>
-                  <p class="card-category">Last Payroll Performance</p>
+                  <h4 class="card-title">Vendor Management</h4>
+                  <p class="card-category">something should appear here</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -186,6 +189,7 @@
                   </div>
                 </div>
               </div>
+               </a>
             </div>
           </div>
          </div>
