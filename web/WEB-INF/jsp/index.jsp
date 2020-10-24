@@ -32,7 +32,7 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="./dashboard.html" class="simple-text logo-normal">
-        Shredder
+       SHREDDER
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -61,7 +61,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Welcome to Shredder</a>
+            <a class="navbar-brand" href="javascript:void(0)">Welcome to SHREDDER
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>

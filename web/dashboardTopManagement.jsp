@@ -123,7 +123,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./Login Page.html">
+                <a class="nav-link" href="./signin.jsp">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
@@ -137,9 +137,14 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
+         
           <div class="row">
             <div class="col-xl-4 col-lg-12">
+<<<<<<< HEAD
+                   <a href="productView.jsp">
+=======
                 <a href="productView.jsp">
+>>>>>>> 49101a893e4505d8c350a781f2f827c6f43bd034
               <div class="card card-chart">
                 <div class="card-header card-header-success">
                   <div class="ct-chart" id="dailySalesChart"></div>
@@ -155,7 +160,11 @@
                   </div>
                 </div>
               </div>
+<<<<<<< HEAD
+                </a>
+=======
              </a>
+>>>>>>> 49101a893e4505d8c350a781f2f827c6f43bd034
             </div>
             <div class="col-xl-4 col-lg-12">
               <div class="card card-chart">
