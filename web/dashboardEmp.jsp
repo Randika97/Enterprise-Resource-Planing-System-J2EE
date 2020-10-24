@@ -146,7 +146,7 @@
              </a>
             </div>
             <div class="col-xl-4 col-lg-12">
-                <a href="vendorView.jsp">
+             <a href="vendorView.jsp">
               <div class="card card-chart">
                 <div class="card-header card-header-warning">
                   <div class="ct-chart" id="websiteViewsChart"></div>
