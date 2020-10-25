@@ -47,7 +47,10 @@ public class LoginUsers extends HttpServlet {
             ResultSet designation = DB.search(desig);
             if (designation.next()) {
                 roll = designation.getString(9);
-                System.out.print("roll "+roll+"hey");
+                System.out.print("User roll :"+roll);
+            }else{
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/redirect.jsp?message=<font color=red>Either user name or password is wrong.</font>");
+		rd.include(request, response);
             }
             
             String sql = "SELECT * FROM `users` WHERE `userName` ='"+userName+"' AND `Password` = '"+password+"'";
