@@ -33,6 +33,7 @@ public class SignupUsers extends HttpServlet {
         bean.setFirstName(request.getParameter("fname"));
         bean.setLastName(request.getParameter("lname"));
         bean.setEmali(request.getParameter("email"));
+        bean.setRoll(request.getParameter("roll"));
         bean.setAddress(request.getParameter("adress"));
         bean.setPassword(request.getParameter("password"));
         bean.setPhoneNo(request.getParameter("pno"));

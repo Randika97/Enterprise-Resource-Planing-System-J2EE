@@ -110,11 +110,16 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./Login Page.html">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
+                <div class="dropdown show">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="material-icons">person</i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="logout" method="GET">
+                            <input type="submit" value="Logout" class="dropdown-item">
+                        </form>
+                    </div>
+                </div>
                 </a>
               </li>
             </ul>
@@ -145,25 +150,7 @@
               </div>
              </a>
             </div>
-            <div class="col-xl-4 col-lg-12">
-             <a href="vendorView.jsp">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Vendor Management</h4>
-                  <p class="card-category">Last Vendor is  something</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">bleh</i>
-                  </div>
-                </div>
-                </form>
-              </div>
-                </a>
-            </div>
+
               
           </div>
 
