@@ -100,21 +100,16 @@
                   <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                  <form action= "SignupEmp"  method="POST">
+                  <form action= "SignupUsers"  method="POST">
+                      <input type="hidden" name="roll" value="Employee">
                     <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Employee ID</label>
-                          <input type="text" name="Emp_id" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
                           <input type="text" name="username" class="form-control">
                         </div>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-8">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email address</label>
                           <input type="text" name="email" class="form-control">
@@ -160,6 +155,7 @@
                         <div class="form-group">
                           <label class="bmd-label-floating">Age</label>
                           <input type="text" name="age" class="form-control">
+                          
                         </div>
                       </div>
                     </div>
@@ -174,7 +170,7 @@
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Sign Up</button>
+                      <button type="submit" class="btn btn-primary pull-right" >Sign Up</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>

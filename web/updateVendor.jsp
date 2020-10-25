@@ -1,24 +1,12 @@
 <%-- 
-    Document   : Ceo_Login
-    Created on : Sep 19, 2020, 9:40:32 AM
-    Author     : ALPHA
+    Document   : updateVendor
+    Created on : 19-Oct-2020, 13:03:07
+    Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--
-=========================================================
-* Material Dashboard Dark Edition - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,10 +41,15 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item ">
+            <a class="nav-link" href="./vendorView.jsp">
+              <i class="material-icons">person</i>
+              <p>Vendor Management</p>
+            </a>
           <li class="nav-item active ">
             <a class="nav-link" href="#">
               <i class="material-icons">person</i>
-              <p>CEO Sign In</p>
+              <p>Vendor update</p>
             </a>
           </li>
           <!-- <li class="nav-item active-pro ">
@@ -73,17 +66,21 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">CEO Sign In</a>
+            <a class="navbar-brand" href="javascript:void(0)">Vendor Management</a>
           </div>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="./Login Page.html">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
-                </a>
+                <div class="dropdown show">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="material-icons">person</i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="logout" method="GET">
+                            <input type="submit" value="Logout" class="dropdown-item">
+                        </form>
+                    </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -93,57 +90,59 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">CEO Sign In</h4>
-                  <p class="card-category">Enter Your Credintials</p>
+                  <h4 class="card-title">Vendor update</h4>
+                  <p class="card-category">Update exist Vendor</p>
                 </div>
+                  <%
+                    String id = request.getParameter("id");
+                    ResultSet rs = DB.search("SELECT * FROM `vendor` Where `vendorId` ='"+id+"'"); 
+                    while(rs.next()){ %>
                 <div class="card-body">
-                    <form action="LoginTopManagement" method="POST">
+                  <form action="VendorHandler" method="post">
                     <div class="row">
-                      <div class="col-md-5">
+                      <div class="col-md-12">
+                        <label class="bmd-label-floating"><% out.print(rs.getString(2)); %></label>
                         <div class="form-group">
-                          <label class="bmd-label-floating">User Name</label>
-                          <input type="text" name="username" class="form-control">
+                          <label class="bmd-label-floating">Update new vendor Name</label>
+                          <input type="hidden" name="id" value="<%=rs.getString(1) %>">
+                          <input type="text" class="form-control" id="vendorName" name="vendorName">
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Password</label>
-                          <input type="password" name="pass" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
                     </div>
                     <div class="row">
                       <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(3)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Update new vendor Contact No</label>
+                          <input type="text" class="form-control" id="vendorPhone" name="vendorPhone">
+                        </div>
                       </div>
                     </div>
-                    <button type="reset" class="btn btn-primary pull-left">Clear</button>
-                    <button type="submit" class="btn btn-primary pull-right">Sign In</button>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(4)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Update new vendor Address</label>
+                          <input type="text" class="form-control" id="vendorAddress" name="vendorAddress">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(5)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Update new vendor Email</label>
+                          <input type="text" class="form-control" id="vendorEmail" name="vendorEmail"> 
+                        </div>
+                      </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary pull-right" name="update" value="update" >
                     <div class="clearfix"></div>
                   </form>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="#pablo">
-                    <img class="img" src="./assets/img/User-CEO.png" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-category">Sign In - CEO</h6>
-                  <h4 class="card-title">CEO</h4>
-                  <p class="card-description">
-                   Sign In using your credintials that provided to the system.
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">About Us</a>
+                  <% } %>
                 </div>
               </div>
             </div>
@@ -414,3 +413,4 @@
 </body>
 
 </html>
+

@@ -1,24 +1,15 @@
 <%-- 
-    Document   : Mang_Login
-    Created on : Sep 17, 2020, 10:56:39 PM
-    Author     : ALPHA
+    Document   : productsupdate
+    Created on : 16-Oct-2020, 00:09:55
+    Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
+<%@page import="beans.Products"%>
+<%@page import="beans.Products"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--
-=========================================================
-* Material Dashboard Dark Edition - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,10 +44,16 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item ">
+            <a class="nav-link" href="./managerView.jsp">
+              <i class="material-icons">wifi_protected_setup</i>
+              <p>Back</p>
+            </a>
+          </li>
           <li class="nav-item active ">
             <a class="nav-link" href="#">
               <i class="material-icons">person</i>
-              <p>Manager Sign In</p>
+              <p>Manager Management</p>
             </a>
           </li>
           <!-- <li class="nav-item active-pro ">
@@ -73,7 +70,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Manager Sign In</a>
+            <a class="navbar-brand" href="javascript:void(0)">User Management</a>
           </div>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
@@ -96,37 +93,89 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Manager Sign In</h4>
-                  <p class="card-category">Enter Your Credintials</p>
+                  <h4 class="card-title">Update Manager Details</h4>
                 </div>
                 <div class="card-body">
-                    <form action="LoginMiddleManagement" method="POST">
+                  <form action="ProductsHandler" name="create" method="post">
+                    <%
+                    String id = request.getParameter("id");
+                    ResultSet rs = DB.search("SELECT * FROM `users` Where `id` ='"+id+"'"); 
+                    while(rs.next()){ %>
                     <div class="row">
-                      <div class="col-md-5">
+                      <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">User Name</label>
-                          <input type="text" name="username" class="form-control">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(2)); %></label>
+                          <input type="hidden" name="id" value="<%=rs.getString(1) %>">
+                          <input type="text" class="form-control" id="produtCode" name="produtCode" value=<% out.print(rs.getString(2)); %> >
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(3)); %></label>
+                          <div class="form-group">
+                          <label class="bmd-label-floating">Updated Email Here</label>
+                          <input type="text" class="form-control" id="productName" name="Email">
+                        </div>
+                      </div> 
+                      <div class="col-md-6">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(8)); %></label>
                         <div class="form-group">
-                          <label class="bmd-label-floating">Password</label>
-                          <input type="password" name="pass" class="form-control">
+                          <label class="bmd-label-floating">Updated Age Here</label>
+                          <input type="text" class="form-control" id="productStockInHand" name="Age">
                         </div>
                       </div>
                     </div>
                     <div class="row">
+                      <div class="col-md-6">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(5)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated First Name here</label>
+                          <input type="text" class="form-control" id="price" name="FirstName">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                           <label class="bmd-label-floating"><% out.print(rs.getString(6)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Last Name here</label>
+                          <input type="text" class="form-control" id="category" name="LastName">
+                        </div>
+                      </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(7)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Phone Number here</label>
+                          <input type="text" class="form-control" id="productDesc" name="PhoneNumber">
+                        </div>
+                      </div>
+                          <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(9)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Job Roll here</label>
+                          <input type="text" class="form-control" id="productDesc" name="JobRoll">
+                        </div>
+                      </div>
+                          <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(10)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Description here</label>
+                          <input type="text" class="form-control" id="productDesc" name="Description">
+                        </div>
+                      </div>
+                         <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(11)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Address here</label>
+                          <input type="text" class="form-control" id="productDesc" name="Address">
+                        </div>
                       </div>
                     </div>
-                    <button type="reset" class="btn btn-primary pull-left">Clear</button>
-                    <button type="submit" class="btn btn-primary pull-right">Sign In</button>
+                    <Input type="submit" class="btn btn-primary pull-right" value ="update" name ="update">
                     <div class="clearfix"></div>
                   </form>
+                 <% } %>
                 </div>
               </div>
             </div>
@@ -134,16 +183,16 @@
               <div class="card card-profile">
                 <div class="card-avatar">
                   <a href="#pablo">
-                    <img class="img" src="./assets/img/user-manager.png" />
+                    <img class="img" src="./assets/img/User-CEO.png" />
                   </a>
                 </div>
                 <div class="card-body">
-                  <h6 class="card-category">Sign In - Manager</h6>
-                  <h4 class="card-title">Manager</h4>
+                  <h6 class="card-category">Vendor</h6>
+                  <h4 class="card-title">Vendor Name will appear here</h4>
                   <p class="card-description">
-                   Sign In using your credintials that provided to the system.
+                   Vendor who has registered in the system will appear here
                   </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">About Us</a>
+                  <a href="#pablo" class="btn btn-primary btn-round">Change Vendor</a>
                 </div>
               </div>
             </div>
@@ -242,7 +291,7 @@
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chartist JS -->
-  <script src="../assets/js/plugins/chartist.min.js"></script>
+  <script src="./assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="./assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

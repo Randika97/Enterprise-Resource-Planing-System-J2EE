@@ -44,22 +44,23 @@ public class VendorHandler extends HttpServlet {
                     vendorGlobal.setVendorAddress(request.getParameter("vendorAddress")); 
                     vendorGlobal.setVendorEmail(request.getParameter("vendorEmail"));
                     vendorInsert();
-                    RequestDispatcher r = request.getRequestDispatcher("/redirect.jsp");
+                    RequestDispatcher r = request.getRequestDispatcher("/vendorView.jsp");
                     r.forward(request, response);
                 }
                 else if(request.getParameter("update")!= null && request.getParameter("update").equals("update")){
+                    int vendorId = Integer.parseInt(request.getParameter("id"));
                     vendorGlobal.setVendorName(request.getParameter("vendorName"));
                     vendorGlobal.setVendorPhone(request.getParameter("vendorPhone"));
                     vendorGlobal.setVendorAddress(request.getParameter("vendorAddress")); 
                     vendorGlobal.setVendorEmail(request.getParameter("vendorEmail"));
-                    vendorUpdate();
-                    RequestDispatcher r = request.getRequestDispatcher("/redirect.jsp");
+                    vendorUpdate(vendorId);
+                    RequestDispatcher r = request.getRequestDispatcher("/vendorView.jsp");
                     r.forward(request, response);
                 }
                 else if(request.getParameter("delete")!= null && request.getParameter("delete").equals("delete")){
                    String id = (String) request.getAttribute("vendorId");
                    vendorDelete(id);
-                    RequestDispatcher r = request.getRequestDispatcher("/redirect.jsp");
+                    RequestDispatcher r = request.getRequestDispatcher("/vendorView.jsp");
                     r.forward(request, response);
                 }
                 else if(request.getParameter("view")!= null && request.getParameter("view").equals("view")){
@@ -96,15 +97,14 @@ public class VendorHandler extends HttpServlet {
 
 
         }
-        public void vendorUpdate() throws Exception {
+        public void vendorUpdate(int id) throws Exception {
             try{
                 //getting values from beans
-                String vendorId = vendorGlobal.getVendorId();
                 String vendorName = vendorGlobal.getVendorName();
                 String vendorPhone = vendorGlobal.getVendorPhone();
                 String vendorAddress = vendorGlobal.getVendorAddress();
                 String vendorEmail = vendorGlobal.getVendorEmail();
-                DB.iud("UPDATE `vendor` SET `vendorName`='"+vendorName+"',`vendorPhone`='"+vendorPhone+"',`vendorAddress`='"+vendorAddress+"' , `vendorEmail`='"+vendorEmail+"' WHERE `vendorId` ='"+vendorId+"'");
+                DB.iud("UPDATE `vendor` SET `vendorName`='"+vendorName+"',`vendorPhone`='"+vendorPhone+"',`vendorAddress`='"+vendorAddress+"' , `vendorEmail`='"+vendorEmail+"' WHERE `vendorId` ='"+id+"'");
 
             }catch(Exception e){
                System.out.println(e);

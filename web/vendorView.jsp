@@ -4,6 +4,8 @@
     Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page import="beans.Vendor"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -51,58 +53,22 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          SHREDDER
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item  ">
-            <a class="nav-link" href="./dashboard.html">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item active ">
-            <a class="nav-link" href="./tables.html">
+          <li class="nav-item active">
+            <a class="nav-link" href="./vendorView.jsp">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Vendor Management</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
+            <a class="nav-link" href="./signupVendor.jsp">
+              <i class="material-icons">content_paste</i>
+              <p>Add vendors</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
         </ul>
       </div>
     </div>
@@ -111,7 +77,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Table List</a>
+            <a class="navbar-brand" href="javascript:void(0)">Vendor Management</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -155,11 +121,16 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
+               <div class="dropdown show">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="material-icons">person</i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="logout" method="GET">
+                            <input type="submit" value="Logout" class="dropdown-item">
+                        </form>
+                    </div>
+                </div>
                 </a>
               </li>
             </ul>
@@ -181,181 +152,38 @@
                     <table class="table">
                       <thead class=" text-primary">
                         <th>
-                          vendorId
+                          Vendor ID
                         </th>
                         <th>
-                          vendorName
+                          Vendor Name
                         </th>
                         <th>
-                          vendorPhone
+                          Vendor Phone
                         </th>
                         <th>
-                          vendorAddress
+                          Vendor Address
                         </th>
                         <th>
-                          vendorEmail
+                          Vendor Email
                         </th>
                         <th>
                           More
                         </th>
                       </thead>
                      <tbody>
-              <%
-            ArrayList<Vendor> vendorsdetails = (ArrayList<Vendor>) request.getAttribute("vendors");
-            for (Vendor vendor : vendorsdetails) {
-                                            %>
-               <tr>
-                 <td><%=vendor.getVendorId()  %></td>
-                 <td><%=vendor.getVendorName() %></td>
-                 <td><%=vendor.getVendorPhone() %></td>
-                 <td><%=vendor.getVendorAddress()  %></td>
-                 <td><%=vendor.getVendorEmail() %></td>
-                 <td><form action="Vendor_handler" method="post">
-                          <% String vendorId = vendor.getVendorId();
-                             request.setAttribute("vendorId", vendorId);
-                          %>
-                         <input type="submit" name="delete" value="delete">
-                         <input type="submit" name="update" value="update">
-                     </form>
-                 </td>
+                     <% ResultSet vendor = DB.search("SELECT * FROM `vendor`");
+                            while(vendor.next()){ %>
+                     <tr>
+                     <td><%=vendor.getString(1) %></td>
+                     <td><%=vendor.getString(2) %></td>
+                     <td><%=vendor.getString(3) %></td>
+                     <td><%=vendor.getString(4)  %></td>
+                     <td><%=vendor.getString(5) %></td>
+                     <td><a href="updateVendor.jsp?id=<%=vendor.getString(1)%>" class="btn btn-primary btn-round" >Update</a>
+                    </td>
                   <% } %>
-               </tr>  
+                    </tr>  
              </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="card card-plain">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title mt-0"> Table on Plain Background</h4>
-                  <p class="card-category"> Here is a subtitle for this table</p>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead class="">
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Name
-                        </th>
-                        <th>
-                          Country
-                        </th>
-                        <th>
-                          City
-                        </th>
-                        <th>
-                          Salary
-                        </th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            Dakota Rice
-                          </td>
-                          <td>
-                            Niger
-                          </td>
-                          <td>
-                            Oud-Turnhout
-                          </td>
-                          <td>
-                            $36,738
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Minerva Hooper
-                          </td>
-                          <td>
-                            Curaçao
-                          </td>
-                          <td>
-                            Sinaai-Waas
-                          </td>
-                          <td>
-                            $23,789
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            Sage Rodriguez
-                          </td>
-                          <td>
-                            Netherlands
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td>
-                            $56,142
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Philip Chaney
-                          </td>
-                          <td>
-                            Korea, South
-                          </td>
-                          <td>
-                            Overland Park
-                          </td>
-                          <td>
-                            $38,735
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Doris Greene
-                          </td>
-                          <td>
-                            Malawi
-                          </td>
-                          <td>
-                            Feldkirchen in Kärnten
-                          </td>
-                          <td>
-                            $63,542
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            Mason Porter
-                          </td>
-                          <td>
-                            Chile
-                          </td>
-                          <td>
-                            Gloucester
-                          </td>
-                          <td>
-                            $78,615
-                          </td>
-                        </tr>
-                      </tbody>
                     </table>
                   </div>
                 </div>

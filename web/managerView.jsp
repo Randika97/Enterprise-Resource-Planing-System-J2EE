@@ -1,15 +1,28 @@
 <%-- 
-    Document   : productsupdate
-    Created on : 16-Oct-2020, 00:09:55
+    Document   : productView
+    Created on : 13-Sep-2020, 14:18:09
     Author     : Randika
 --%>
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="controller.DB"%>
 <%@page import="beans.Products"%>
-<%@page import="beans.Products"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!--
+=========================================================
+* Material Dashboard Dark Edition - v2.1.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
+* Copyright 2019 Creative Tim (http://www.creative-tim.com)
+
+* Coded by www.creative-tim.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,29 +52,29 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="./dashboard.html" class="simple-text logo-normal">
+      <div class="logo"><a href="dashboardTopManagement.jsp" class="simple-text logo-normal">
           Shredder
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item ">
-            <a class="nav-link" href="./productView.jsp">
+            <li class="nav-item  ">
+            <a class="nav-link" href="./empView.jsp">
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <p>Employees</p>
             </a>
           </li>
-          <li class="nav-item active ">
-            <a class="nav-link" href="#">
-              <i class="material-icons">person</i>
-              <p>Product Management</p>
+          <li class="nav-item active">
+            <a class="nav-link" href="./managerView.jsp">
+              <i class="material-icons">content_paste</i>
+              <p>Managers</p>
             </a>
           </li>
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="./ceoView.jsp">
+              <i class="material-icons">content_paste</i>
+              <p>CEO</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -70,112 +83,68 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Inventory Management</a>
+            <a class="navbar-brand" href="javascript:void(0)">User Management</a>
           </div>
-          <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <div class="dropdown show">
-                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="material-icons">person</i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <form action="logout" method="GET">
-                            <input type="submit" value="Logout" class="dropdown-item">
-                        </form>
-                    </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
         </div>
       </nav>
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Insert Product</h4>
+                  <h4 class="card-title ">Manager Table</h4>
+                  <p class="card-category"> Manager Details</p>
                 </div>
                 <div class="card-body">
-                  <form action="ProductsHandler" name="create" method="post">
-                    <%
-                    String id = request.getParameter("id");
-                    ResultSet rs = DB.search("SELECT * FROM `products` Where `id` ='"+id+"'"); 
-                    while(rs.next()){ %>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><% out.print(rs.getString(2)); %></label>
-                          <input type="hidden" name="id" value="<%=rs.getString(1) %>">
-                          <input type="text" class="form-control" id="produtCode" name="produtCode" value=<% out.print(rs.getString(2)); %> >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                          <label class="bmd-label-floating"><% out.print(rs.getString(3)); %></label>
-                          <div class="form-group">
-                          <label class="bmd-label-floating">Updated name here</label>
-                          <input type="text" class="form-control" id="productName" name="productName">
-                        </div>
-                      </div> 
-                      <div class="col-md-6">
-                          <label class="bmd-label-floating"><% out.print(rs.getString(4)); %></label>
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Updated quantity here</label>
-                          <input type="text" class="form-control" id="productStockInHand" name="productStockInHand">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                          <label class="bmd-label-floating"><% out.print(rs.getString(5)); %></label>
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Updated Price here</label>
-                          <input type="text" class="form-control" id="price" name="price">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                           <label class="bmd-label-floating"><% out.print(rs.getString(6)); %></label>
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Updated category here</label>
-                          <input type="text" class="form-control" id="category" name="category">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                          <label class="bmd-label-floating"><% out.print(rs.getString(7)); %></label>
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Updated description here</label>
-                          <input type="text" class="form-control" id="productDesc" name="productDesc">
-                        </div>
-                      </div>
-                    </div>
-                    <Input type="submit" class="btn btn-primary pull-right" value ="update" name ="update">
-                    <div class="clearfix"></div>
-                  </form>
-                 <% } %>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="#pablo">
-                    <img class="img" src="./assets/img/User-CEO.png" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-category">Vendor</h6>
-                  <h4 class="card-title">Vendor Name will appear here</h4>
-                  <p class="card-description">
-                   Vendor who has registered in the system will appear here
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Change Vendor</a>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                           User Name
+                        </th>
+                        <th>
+                          Email
+                        </th>
+                        <th>
+                         First Name
+                        </th>
+                        <th>
+                          Last Name
+                        </th>
+                        <th>
+                         Phone No
+                        </th>
+                        <th>
+                          Job Roll
+                        </th>
+                         <th>
+                          Employee Update
+                         </th>
+                      </thead>
+                     <tbody>
+                        <% ResultSet rs = DB.search("SELECT * FROM `users` where roll = 'Manager'");
+                            while(rs.next()){ %>
+                        <tr>
+                            <td><%=rs.getString(2)  %></td>
+                            <td><%=rs.getString(3) %></td>
+                            <td><%=rs.getString(5) %></td>
+                            <td><%=rs.getString(6)  %></td>
+                            <td><%=rs.getString(7)  %></td>
+                            <td><%=rs.getString(9) %></td>
+                            <td><a href="managerUpdate.jsp?id=<%=rs.getString("id")%>" class="btn btn-primary btn-round">UPDATE</a></td>
+                            <% }%>
+                        </tr>  
+                     </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -260,6 +229,31 @@
           <a class="img-holder switch-trigger" href="javascript:void(0)">
             <img src="./assets/img/sidebar-4.jpg" alt="">
           </a>
+        </li>
+        <li class="button-container">
+          <a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+        </li>
+        <!-- <li class="header-title">Want more components?</li>
+            <li class="button-container">
+                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
+                  Get the pro version
+                </a>
+            </li> -->
+        <li class="button-container">
+          <a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+            View Documentation
+          </a>
+        </li>
+        <li class="button-container github-star">
+          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        </li>
+        <li class="header-title">Thank you for 95 shares!</li>
+        <li class="button-container text-center">
+          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+          <br>
+          <br>
+        </li>
       </ul>
     </div>
   </div>

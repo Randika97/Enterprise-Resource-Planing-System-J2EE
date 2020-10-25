@@ -45,15 +45,15 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item ">
-            <a class="nav-link" href="./productView.jsp">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+            <a class="nav-link" href="./ceoView.jsp">
+              <i class="material-icons">wifi_protected_setup</i>
+              <p>Back</p>
             </a>
           </li>
           <li class="nav-item active ">
             <a class="nav-link" href="#">
               <i class="material-icons">person</i>
-              <p>Product Management</p>
+              <p>CEO Management</p>
             </a>
           </li>
           <!-- <li class="nav-item active-pro ">
@@ -70,21 +70,17 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Inventory Management</a>
+            <a class="navbar-brand" href="javascript:void(0)">User Management</a>
           </div>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <div class="dropdown show">
-                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="material-icons">person</i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <form action="logout" method="GET">
-                            <input type="submit" value="Logout" class="dropdown-item">
-                        </form>
-                    </div>
-                </div>
+                <a class="nav-link" href="./Login Page.html">
+                  <i class="material-icons">person</i>
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
               </li>
             </ul>
           </div>
@@ -97,13 +93,13 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Insert Product</h4>
+                  <h4 class="card-title">Update CEO Details</h4>
                 </div>
                 <div class="card-body">
                   <form action="ProductsHandler" name="create" method="post">
                     <%
                     String id = request.getParameter("id");
-                    ResultSet rs = DB.search("SELECT * FROM `products` Where `id` ='"+id+"'"); 
+                    ResultSet rs = DB.search("SELECT * FROM `users` Where `id` ='"+id+"'"); 
                     while(rs.next()){ %>
                     <div class="row">
                       <div class="col-md-12">
@@ -118,15 +114,15 @@
                       <div class="col-md-6">
                           <label class="bmd-label-floating"><% out.print(rs.getString(3)); %></label>
                           <div class="form-group">
-                          <label class="bmd-label-floating">Updated name here</label>
-                          <input type="text" class="form-control" id="productName" name="productName">
+                          <label class="bmd-label-floating">Updated Email Here</label>
+                          <input type="text" class="form-control" id="productName" name="Email">
                         </div>
                       </div> 
                       <div class="col-md-6">
-                          <label class="bmd-label-floating"><% out.print(rs.getString(4)); %></label>
+                          <label class="bmd-label-floating"><% out.print(rs.getString(8)); %></label>
                         <div class="form-group">
-                          <label class="bmd-label-floating">Updated quantity here</label>
-                          <input type="text" class="form-control" id="productStockInHand" name="productStockInHand">
+                          <label class="bmd-label-floating">Updated Age Here</label>
+                          <input type="text" class="form-control" id="productStockInHand" name="Age">
                         </div>
                       </div>
                     </div>
@@ -134,15 +130,15 @@
                       <div class="col-md-6">
                           <label class="bmd-label-floating"><% out.print(rs.getString(5)); %></label>
                         <div class="form-group">
-                          <label class="bmd-label-floating">Updated Price here</label>
-                          <input type="text" class="form-control" id="price" name="price">
+                          <label class="bmd-label-floating">Updated First Name here</label>
+                          <input type="text" class="form-control" id="price" name="FirstName">
                         </div>
                       </div>
                       <div class="col-md-6">
                            <label class="bmd-label-floating"><% out.print(rs.getString(6)); %></label>
                         <div class="form-group">
-                          <label class="bmd-label-floating">Updated category here</label>
-                          <input type="text" class="form-control" id="category" name="category">
+                          <label class="bmd-label-floating">Updated Last Name here</label>
+                          <input type="text" class="form-control" id="category" name="LastName">
                         </div>
                       </div>
                     </div>
@@ -150,8 +146,29 @@
                       <div class="col-md-12">
                           <label class="bmd-label-floating"><% out.print(rs.getString(7)); %></label>
                         <div class="form-group">
-                          <label class="bmd-label-floating">Updated description here</label>
-                          <input type="text" class="form-control" id="productDesc" name="productDesc">
+                          <label class="bmd-label-floating">Updated Phone Number here</label>
+                          <input type="text" class="form-control" id="productDesc" name="PhoneNumber">
+                        </div>
+                      </div>
+                          <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(9)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Job Roll here</label>
+                          <input type="text" class="form-control" id="productDesc" name="JobRoll">
+                        </div>
+                      </div>
+                          <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(10)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Description here</label>
+                          <input type="text" class="form-control" id="productDesc" name="Description">
+                        </div>
+                      </div>
+                         <div class="col-md-12">
+                          <label class="bmd-label-floating"><% out.print(rs.getString(11)); %></label>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Updated Address here</label>
+                          <input type="text" class="form-control" id="productDesc" name="Address">
                         </div>
                       </div>
                     </div>

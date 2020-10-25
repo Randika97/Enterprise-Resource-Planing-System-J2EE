@@ -32,7 +32,7 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="./dashboard.html" class="simple-text logo-normal">
-        Shredder
+       SHREDDER
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -61,7 +61,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Welcome to Shredder</a>
+            <a class="navbar-brand" href="javascript:void(0)">Welcome to SHREDDER
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -90,62 +90,43 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-success">
-                  <div class="ct-chart">
-                    <img src="./assets/img/user - employee.png" width="250px" height="200px">
-                    <br>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Employee Sign In</h4>
-                </div>
-                <div class="card-footer">
-                  <a href="./loginEmp.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Logged in 10 minutes ago
-                  </div>
-                </div>
+              <div>
+                    <img src="./assets/img/logo_transparent.png" width="650px" height="520px">
               </div>
             </div>
             <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" >
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./assets/img/user-manager.png" width="200px" height="200px">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Manager Sign In</h4>
-                </div>
-                <div class="card-footer">
-                  <a href="./loginMiddleManagement.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Last Loggin 2 days ago
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="col-xl-4 col-lg-12">
+                <form action="LoginUsers" method="POST">
               <div class="card card-chart">
                 <div class="card-header card-header-danger">
                   <div class="ct-chart">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <img src="./assets/img/User-CEO.png" width="200px" height="200px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./assets/img/User-CEO.png" width="200px" height="200px">
                   </div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">CEO Sign In</h4>
-                </div>
-                <div class="card-footer">
-                  <a href="./loginTopManagement.jsp"><button class="btn btn-primary pull-right">Sign In</button></a>
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Last Loggin 5 days ago
-                  </div>
+                    <center>
+                        <h4 class="card-title">Sign In</h4>
+                        <br><br>
+                        <div class="row align-items-center">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">User Name</label>
+                              <input type="text"  name="userName" class="form-control">
+                            </div>
+                            <div class="form-group">
+                              <label class="bmd-label-floating">Password</label>
+                              <input type="password" name="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit"  class="btn btn-primary pull-right"> Login </button>
+                            </div>
+                        </div>
+                    </center>
                 </div>
               </div>
+             </form>
             </div>
           </div>
-
               </div>
             </div>
           </div>
@@ -153,30 +134,7 @@
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
+
           <div class="copyright float-right" id="date">
             <a href="http://13.212.144.97" target="_blank">Shredder</a> by Stark Inc.
           </div>

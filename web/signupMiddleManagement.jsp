@@ -78,7 +78,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="./Login Page.html">
+                <a class="nav-link" href="./redirect.jsp">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
                     Account
@@ -100,15 +100,10 @@
                   <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                  <form action= "SignupMiddleManagement"  method="POST">
+                  <form action= "SignupUsers"  method="POST">
+                      <input type="hidden" name="roll" value="Manager">
                     <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Manager ID</label>
-                          <input type="text" name="Mang_id" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-3">
+                      <div class="col-md-8">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
                           <input type="text" name="username" class="form-control">
@@ -138,7 +133,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
+                          <label class="bmd-label-floating">Address</label>
                           <input type="text" name="adress" class="form-control">
                         </div>
                       </div>

@@ -4,6 +4,9 @@
     Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +42,19 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./productView.jsp">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
           <li class="nav-item active ">
             <a class="nav-link" href="#">
               <i class="material-icons">person</i>
-              <p>Product Management</p>
+              <p>Load up Inventory</p>
             </a>
           </li>
+          
           <!-- <li class="nav-item active-pro ">
                 <a class="nav-link" href="./upgrade.html">
                     <i class="material-icons">unarchive</i>
@@ -64,12 +74,16 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="./Login Page.html">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
-                </a>
+                <div class="dropdown show">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="material-icons">person</i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="logout" method="GET">
+                            <input type="submit" value="Logout" class="dropdown-item">
+                        </form>
+                    </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -147,7 +161,12 @@
                   <h6 class="card-category">Vendor</h6>
                   <h4 class="card-title">Vendor Name will appear here</h4>
                   <p class="card-description">
-                   Vendor who has registered in the system will appear here
+                    <% ResultSet rs = DB.search("SELECT * FROM `vendor`"); %>
+                    <select name="vid">
+                    <%  while(rs.next()){ %>
+                        <option value="<%= rs.getString(1)%>"><%= rs.getString(2)%></option>
+                    <% } %>
+                    </select>
                   </p>
                   <a href="#pablo" class="btn btn-primary btn-round">Change Vendor</a>
                 </div>

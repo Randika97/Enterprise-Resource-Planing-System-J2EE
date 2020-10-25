@@ -110,11 +110,16 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./Login Page.html">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
+                <div class="dropdown show">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="material-icons">person</i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="logout" method="GET">
+                            <input type="submit" value="Logout" class="dropdown-item">
+                        </form>
+                    </div>
+                </div>
                 </a>
               </li>
             </ul>
@@ -126,13 +131,13 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-4 col-lg-12">
+              <a href="productView.jsp">
               <div class="card card-chart">
                 <div class="card-header card-header-success">
                   <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
-                  <form action="ProductsHandler" method="POST">
                 <div class="card-body">
-                  <h4 class="card-title">Inverntory Management</h4>
+                    <h4 class="card-title">Inverntory Management</h4>
                   <p class="card-category">
                     <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today Stock in Inverntory.</p>
                 </div>
@@ -140,11 +145,13 @@
                   <div class="stats">
                     <i class="material-icons">access_time</i> updated 4 minutes ago
                   </div>
-                    <input type="submit" class="btn btn-primary" value="view" name="view">
                 </div>
                 </form>
               </div>
+             </a>
             </div>
+
+              
           </div>
 
               </div>

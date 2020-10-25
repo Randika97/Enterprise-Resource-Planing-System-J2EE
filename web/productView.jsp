@@ -4,6 +4,8 @@
     Author     : Randika
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page import="beans.Products"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -51,58 +53,23 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          Shredder
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item  ">
-            <a class="nav-link" href="./dashboard.html">
+            <li class="nav-item active ">
+            <a class="nav-link" href="./dashboardEmp.jsp">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item active ">
-            <a class="nav-link" href="./tables.html">
+          <li class="nav-item">
+            <a class="nav-link" href="./productsInsert.jsp">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Load up Inventory</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
+          
         </ul>
       </div>
     </div>
@@ -111,7 +78,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Table List</a>
+            <a class="navbar-brand" href="javascript:void(0)">Inventory Management</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -155,12 +122,16 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
-                </a>
+                <div class="dropdown show">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="material-icons">person</i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="logout" method="GET">
+                            <input type="submit" value="Logout" class="dropdown-item">
+                        </form>
+                    </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -173,54 +144,49 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Simple Table</h4>
-                  <p class="card-category"> Here is a subtitle for this table</p>
+                  <h4 class="card-title ">Product Table</h4>
+                  <p class="card-category"> Product Details</p>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
                         <th>
-                          produtCode
+                          Product Code
                         </th>
                         <th>
-                          productName
+                          Product Name
                         </th>
                         <th>
-                          productStockInHand
+                          Product Stock In Hand
                         </th>
                         <th>
-                          price
+                          Price
                         </th>
                         <th>
-                          category
+                          Category
                         </th>
                         <th>
-                          productDesc
+                          Product Description
                         </th>
                          <th>
-                          Product update
+                          Product Update
                          </th>
                       </thead>
                      <tbody>
-              <%
-                  ArrayList<Products> products = (ArrayList<Products>) request.getAttribute("products");
-                  for (Products pro : products){
-                
-              %>
-               <tr>
-                 <td><%=pro.getProdutCode()  %></td>
-                 <td><%=pro.getProductName() %></td>
-                 <td><%=pro.getPrice() %></td>
-                 <td><%=pro.getCategory()  %></td>
-                 <td><%=pro.getProductStockInHand()%></td>
-                 <td><%=pro.getProductDesc() %></td>
-                 <td>
-                     <a href="productsUpdate.jsp">See more ....</a>
-                 </td>
-                  <% } %>
-               </tr>  
-             </tbody>
+                        <% ResultSet rs = DB.search("SELECT * FROM `products`");
+                            while(rs.next()){ %>
+                        <tr>
+                            <td><%=rs.getString(2)  %></td>
+                            <td><%=rs.getString(3) %></td>
+                            <td><%=rs.getString(4) %></td>
+                            <td><%=rs.getString(5)  %></td>
+                            <td><%=rs.getString(6)  %></td>
+                            <td><%=rs.getString(7) %></td>
+                            <td><a href="productsUpdate.jsp?id=<%=rs.getString("id")%>" class="btn btn-primary btn-round">UPDATE</a></td>
+                            <% }%>
+                        </tr>  
+                     </tbody>
                     </table>
                   </div>
                 </div>
