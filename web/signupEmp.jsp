@@ -101,6 +101,7 @@
                 </div>
                 <div class="card-body">
                   <form action= "SignupUsers"  method="POST">
+                      <input type="hidden" name="roll" value="Employee">
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -154,6 +155,7 @@
                         <div class="form-group">
                           <label class="bmd-label-floating">Age</label>
                           <input type="text" name="age" class="form-control">
+                          
                         </div>
                       </div>
                     </div>

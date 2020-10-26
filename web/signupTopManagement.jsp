@@ -101,14 +101,9 @@
                 </div>
                 <div class="card-body">
                     <form action="SignupUsers" method="POST">
+                    <input type="hidden" name="roll" value="CEO">
                     <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">CEO ID</label>
-                          <input type="text" name="Ceo_id" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-3">
+                      <div class="col-md-8">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
                           <input type="text"  name="username" class="form-control">
@@ -124,7 +119,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
+                          <label class="bmd-label-floating">First Name</label>
                           <input type="text" name="fname"   class="form-control">
                         </div>
                       </div>
