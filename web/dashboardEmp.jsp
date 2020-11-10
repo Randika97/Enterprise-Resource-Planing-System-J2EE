@@ -4,6 +4,10 @@
     Author     : ALPHA
 --%>
 
+<%@page import="beans.Products"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="controller.DB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,14 +150,10 @@
                     <i class="material-icons">access_time</i> updated 4 minutes ago
                   </div>
                 </div>
-                </form>
               </div>
              </a>
             </div>
-
-              
-          </div>
-
+            </div>
               </div>
             </div>
           </div>
@@ -198,56 +198,30 @@
       </script>
     </div>
   </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-      <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Filters</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger active-color">
-            <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-purple active" data-color="purple"></span>
-              <span class="badge filter badge-azure" data-color="azure"></span>
-              <span class="badge filter badge-green" data-color="green"></span>
-              <span class="badge filter badge-warning" data-color="orange"></span>
-              <span class="badge filter badge-danger" data-color="danger"></span>
-            </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="header-title">Images</li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="./assets/img/sidebar-1.jpg" alt="">
-          </a>
-        </li>
-        <li class="active">
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="./assets/img/sidebar-2.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="./assets/img/sidebar-3.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="./assets/img/sidebar-4.jpg" alt="">
-          </a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <form action="EmailSendingServlet" method="POST">
+                     <%
+                     ArrayList<Products> lowproducts = new ArrayList<Products>();
+                     ResultSet rs = DB.search("SELECT * FROM `products` WHERE productStockInHand < 20");
+                            if (rs.next()) {%>
+                              <div class="fixed-plugin">
+                                <div class="dropdown show-dropdown">
+                                  <a href="#" data-toggle="dropdown">
+                                    Alert<i class="fa fa-cog fa-2x"></i>
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                    <li class="header-title"> Important notice</li>
+                                    <li class="header-title">Low inventory products found</li>
+                                    <li class="button-container text-center">
+                                      <input type="submit" id="facebook" class="btn btn-round btn-facebook" value="Inform supervisor"><i class="fa fa-facebook-f"></i>
+                                      <br>
+                                      <br>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                        <%}%>
+                </form>
+
   <!--   Core JS Files   -->
   <script src="./assets/js/core/jquery.min.js"></script>
   <script src="./assets/js/core/popper.min.js"></script>
