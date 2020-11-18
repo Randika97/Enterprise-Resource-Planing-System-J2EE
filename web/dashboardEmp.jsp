@@ -210,13 +210,14 @@
                               <div class="fixed-plugin">
                                 <div class="dropdown show-dropdown">
                                   <a href="#" data-toggle="dropdown">
-                                    Alert<i class="fa fa-cog fa-2x"></i>
+                                    Alert
+                                    <br><span class="material-icons">error_outline</span>
                                   </a>
                                   <ul class="dropdown-menu">
                                     <li class="header-title"> Important notice</li>
-                                    <li class="header-title">Low inventory products found</li>
+                                    <li class="header-title"><font color="red">Low inventory products found</font></li>
                                     <li class="button-container text-center">
-                                      <input type="submit" id="facebook" class="btn btn-round btn-facebook" value="Inform supervisor"><i class="fa fa-facebook-f"></i>
+                                      <input type="submit" id="facebook" class="btn btn-round btn-facebook" value="Inform supervisor">
                                       <br>
                                       <br>
                                     </li>
