@@ -164,7 +164,8 @@
                     <% ResultSet rs = DB.search("SELECT * FROM `vendor`"); %>
                     <select name="vid">
                     <%  while(rs.next()){ %>
-                        <option value="<%= rs.getString(1)%>"><%= rs.getString(2)%></option>
+                    
+                        <option class="dropdown-item" value="<%= rs.getString(1)%>"><%= rs.getString(2)%></option>
                     <% } %>
                     </select>
                   </p>

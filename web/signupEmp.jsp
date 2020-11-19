@@ -48,14 +48,14 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="signUp.jsp" class="simple-text logo-normal">
           Shredder
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active ">
             <a class="nav-link" href="#">
-              <i class="material-icons">person</i>
+              <i class="material-icons">person_add</i>
               <p>Employee Sign Up</p>
             </a>
           </li>
@@ -100,7 +100,7 @@
                   <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                  <form action= "SignupUsers"  method="POST">
+                <form action= "SignupUsers"  method="POST" enctype="multipart/form-data">
                       <input type="hidden" name="roll" value="Employee">
                     <div class="row">
                       <div class="col-md-4">
@@ -172,7 +172,7 @@
                     </div>
                       <button type="submit" class="btn btn-primary pull-right" >Sign Up</button>
                     <div class="clearfix"></div>
-                  </form>
+                  
                 </div>
               </div>
             </div>
@@ -184,15 +184,13 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h6 class="card-category">Sign Up - Employee</h6>
-                  <h4 class="card-title">Employee</h4>
-                  <p class="card-description">
-                   Sign Up as a employee and become a sucessful person in our company
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">About Us</a>
+                  <h6 class="card-category">Profile Picture</h6>
+                  <h4 class="card-title">upload a picture less than 5Mb</h4>
+                  <input type="file" name="profilePic" value="Upload" class="btn btn-primary btn-round">
                 </div>
               </div>
             </div>
+           </form>
           </div>
         </div>
       </div>

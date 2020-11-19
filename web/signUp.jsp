@@ -48,20 +48,20 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="./dashboard.html" class="simple-text logo-normal">
+      <div class="logo"><a href="#" class="simple-text logo-normal">
         Shredder
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item ">
             <a class="nav-link" href="./redirect.jsp">
-              <i class="material-icons">dashboard</i>
+              <i class="material-icons">person</i>
               <p>Sign In</p>
             </a>
           </li>
           <li class="nav-item active  ">
             <a class="nav-link" href="./signUp.jsp">
-              <i class="material-icons">person</i>
+              <i class="material-icons">person_add</i>
               <p>Sign Up</p>
             </a>
           <!-- <li class="nav-item active-pro ">

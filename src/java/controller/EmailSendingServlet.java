@@ -5,7 +5,10 @@
  */
 package controller;
 
+import beans.Products;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
  
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,6 +24,7 @@ public class EmailSendingServlet extends HttpServlet {
     private String port;
     private String user;
     private String pass;
+    
  
     public void init() {
         // reads SMTP server setting from web.xml file
@@ -31,16 +35,24 @@ public class EmailSendingServlet extends HttpServlet {
         pass = context.getInitParameter("pass");
     }
  
+    @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         // reads form fields
-        String recipient = request.getParameter("recipient");
-        String subject = request.getParameter("subject");
-        String content = request.getParameter("content");
- 
+        String recipient = "randikasuridu@gmail.com";
+        String subject = "Low products warning";
+
         String resultMessage = "";
  
         try {
+              ResultSet rs = DB.search("SELECT * FROM `products` WHERE productStockInHand < 20");
+              ArrayList<String> lowproducts = new ArrayList<>();
+              while(rs.next()) {
+              System.out.println(rs.getString(2));
+              lowproducts.add(rs.getString(2));
+            }
+            System.out.print(lowproducts);
+            String content = "These products have low stock in hand :"+lowproducts;
             EmailUtility.sendEmail(host, port, user, pass, recipient, subject,
                     content);
             resultMessage = "The e-mail was sent successfully";
@@ -49,7 +61,7 @@ public class EmailSendingServlet extends HttpServlet {
             resultMessage = "There were an error: " + ex.getMessage();
         } finally {
             request.setAttribute("Message", resultMessage);
-            getServletContext().getRequestDispatcher("/result.jsp").forward(
+            getServletContext().getRequestDispatcher("/dashboardEmp.jsp").forward(
                     request, response);
         }
     }
