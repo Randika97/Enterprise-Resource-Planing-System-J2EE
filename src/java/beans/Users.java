@@ -106,16 +106,7 @@ public class Users {
     /**
      * @return the age
      */
-    public String getAge() {
-        return age;
-    }
 
-    /**
-     * @param age the age to set
-     */
-    public void setAge(String age) {
-        this.age = age;
-    }
 
     /**
      * @return the phoneNo
@@ -172,6 +163,20 @@ public class Users {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    
+
+    /**
+     * @return the age
+     */
+    public String getAge() {
+        return age;
+    }
+
+    /**
+     * @param age the age to set
+     */
+    public void setAge(String age) {
+        this.age = age;
+    }
+
     
 }

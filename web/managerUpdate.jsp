@@ -96,7 +96,7 @@
                   <h4 class="card-title">Update Manager Details</h4>
                 </div>
                 <div class="card-body">
-                  <form action="ProductsHandler" name="create" method="post">
+                  <form action="UserHandler" name="update" method="post">
                     <%
                     String id = request.getParameter("id");
                     ResultSet rs = DB.search("SELECT * FROM `users` Where `id` ='"+id+"'"); 

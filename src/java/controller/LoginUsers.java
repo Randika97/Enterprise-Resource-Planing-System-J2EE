@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "LoginUsers", urlPatterns = {"/LoginUsers"})
 public class LoginUsers extends HttpServlet {
-    String roll;
+    String designation = null;
     int id;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -32,48 +32,37 @@ public class LoginUsers extends HttpServlet {
          try {
        
             
-            String userName = request.getParameter("userName");
+            String uname = request.getParameter("userName");
             String password= request.getParameter("password");
-            Cookie loginCookie = new Cookie("user",userName);
-            loginCookie.setMaxAge(30*60);
-            response.addCookie(loginCookie);
-//            String userid = "SELECT * FROM `users` WHERE `userName ='"+userName+"'";
-//            ResultSet uid = DB.search(userid);
-//            if (uid.next()) {
-//                id = Integer.parseInt(uid.getString(0));
-//                System.out.print("id"+id);
-//            }
-            String desig = "SELECT * FROM `users` WHERE `userName` ='"+userName+"'";
-            ResultSet designation = DB.search(desig);
-            if (designation.next()) {
-                roll = designation.getString(9);
-                System.out.print("User roll :"+roll);
-            }else{
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/redirect.jsp?message=<font color=red>Either user name or password is wrong.</font>");
-		rd.include(request, response);
-            }
-            
-            String sql = "SELECT * FROM `users` WHERE `userName` ='"+userName+"' AND `Password` = '"+password+"'";
+            String sql = "SELECT * FROM `users` WHERE `userName` ='"+uname+"' AND `Password` = '"+password+"'";
             ResultSet search = DB.search(sql);
             if (search.next()) {
                 HttpSession session = request.getSession(true);
-                session.setAttribute("user", userName);
-                if(roll.equals("Employee")){
-                    RequestDispatcher r = request.getRequestDispatcher("dashboardEmp.jsp?message=Hello+" + userName + "");
+                session.setAttribute("user", uname);
+                String query = "SELECT * FROM `users` WHERE `userName` ='"+uname+"'";
+                ResultSet desig = DB.search(query);
+                if (desig.next()) {
+                    String roll = desig.getString(9);
+                    designation = roll;
+                    System.out.print("User's roll in the system :"+roll);
+                }
+                
+                if(designation.equals("Employee")){
+                    RequestDispatcher r = request.getRequestDispatcher("dashboardEmp.jsp?message=Hello+" + uname + "");
                 r.forward(request, response);
                 }
                 
-                else if(roll.equals("CEO")){
-                    RequestDispatcher r = request.getRequestDispatcher("dashboardTopManagement.jsp?message=Hello+" + userName + "");
+                else if(designation.equals("CEO")){
+                    RequestDispatcher r = request.getRequestDispatcher("dashboardTopManagement.jsp?message=Hello+" + uname + "");
                 r.forward(request, response);
                 }
-                else if(roll.equals("Manager")){
-                    RequestDispatcher r = request.getRequestDispatcher("dashboardMiddleManagement.jsp?message=Hello+" + userName + "");
+                else if(designation.equals("Manager")){
+                    RequestDispatcher r = request.getRequestDispatcher("dashboardMiddleManagement.jsp?message=Hello+" + uname + "");
                 r.forward(request, response);
                 }
     
             } else {
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/redirect.jsp?message=<font color=red>Either user name or password is wrong.</font>");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/redirect.jsp");
 		rd.include(request, response);
             }
         } catch (Exception ex) {

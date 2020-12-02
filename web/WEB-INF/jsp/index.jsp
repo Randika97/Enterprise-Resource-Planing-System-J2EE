@@ -97,7 +97,7 @@
             <div class="col-xl-4 col-lg-12">
             </div>
             <div class="col-xl-4 col-lg-12">
-                <form action="LoginUsers" method="POST">
+              <form action="LoginUsers" method="POST">
               <div class="card card-chart">
                 <div class="card-header card-header-danger">
                   <div class="ct-chart">
@@ -111,11 +111,11 @@
                         <div class="row align-items-center">
                             <div class="form-group">
                               <label class="bmd-label-floating">User Name</label>
-                              <input type="text"  name="userName" class="form-control">
+                              <input type="text"  name="userName" class="form-control" required>
                             </div>
                             <div class="form-group">
                               <label class="bmd-label-floating">Password</label>
-                              <input type="password" name="password" class="form-control">
+                              <input type="password" name="password" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <button type="submit"  class="btn btn-primary pull-right"> Login </button>

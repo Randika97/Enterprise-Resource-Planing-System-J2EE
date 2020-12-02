@@ -96,7 +96,7 @@
                   <h4 class="card-title">Update Employee Details</h4>
                 </div>
                 <div class="card-body">
-                  <form action="ProductsHandler" name="create" method="post">
+                  <form action="UserHandler" name="update" method="post">
                     <%
                     String id = request.getParameter("id");
                     ResultSet rs = DB.search("SELECT * FROM `users` Where `id` ='"+id+"'"); 
@@ -172,6 +172,7 @@
                         </div>
                       </div>
                     </div>
+                    <Input type="submit" class="btn btn-primary pull-right" value ="delete" name ="delete">
                     <Input type="submit" class="btn btn-primary pull-right" value ="update" name ="update">
                     <div class="clearfix"></div>
                   </form>

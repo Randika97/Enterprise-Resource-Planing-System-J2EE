@@ -104,7 +104,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Product Code</label>
-                          <input type="text" class="form-control" id="produtCode" name="produtCode">
+                          <input type="text" class="form-control" id="produtCode" name="produtCode" required>
                         </div>
                       </div>
                     </div>
@@ -112,13 +112,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Product Name</label>
-                          <input type="text" class="form-control" id="productName" name="productName">
+                          <input type="text" class="form-control" id="productName" name="productName" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Quantity</label>
-                          <input type="text" class="form-control" id="productStockInHand" name="productStockInHand">
+                          <input type="text" class="form-control" id="productStockInHand" name="productStockInHand" required>
                         </div>
                       </div>
                     </div>
@@ -126,13 +126,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Per item Price</label>
-                          <input type="text" class="form-control" id="price" name="price">
+                          <input type="text" class="form-control" id="price" name="price" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Catergory</label>
-                          <input type="text" class="form-control" id="category" name="category">
+                          <input type="text" class="form-control" id="category" name="category" required>
                         </div>
                       </div>
                     </div>
@@ -140,7 +140,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Description</label>
-                          <input type="text" class="form-control" id="productDesc" name="productDesc">
+                          <input type="text" class="form-control" id="productDesc" name="productDesc" required>
                         </div>
                       </div>
                     </div>

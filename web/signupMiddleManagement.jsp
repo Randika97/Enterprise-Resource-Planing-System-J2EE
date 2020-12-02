@@ -100,19 +100,19 @@
                   <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                  <form action= "SignupUsers"  method="POST">
+                  <form action= "UserHandler"  method="POST">
                       <input type="hidden" name="roll" value="Manager">
                     <div class="row">
                       <div class="col-md-8">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
-                          <input type="text" name="username" class="form-control">
+                          <input type="text" name="username" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email address</label>
-                          <input type="text" name="email" class="form-control">
+                          <input type="text" name="email" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -120,13 +120,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" name="fname" class="form-control">
+                          <input type="text" name="fname" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Last Name</label>
-                          <input type="text" name="lname" class="form-control">
+                          <input type="text" name="lname" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -134,7 +134,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Address</label>
-                          <input type="text" name="adress" class="form-control">
+                          <input type="text" name="adress" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -142,19 +142,19 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Password</label>
-                          <input type="password" name="password" class="form-control">
+                          <input type="password" name="password" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Phone Number</label>
-                          <input type="text" name="pno" class="form-control">
+                          <input type="text" name="pno" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Age</label>
-                          <input type="text" name="age" class="form-control">
+                          <input type="text" name="age" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -164,12 +164,12 @@
                           <label>About Me</label>
                           <div class="form-group">
                             <label class="bmd-label-floating">Little bit about yourself</label>
-                            <textarea name="desc" class="form-control" rows="5"></textarea>
+                            <textarea name="desc" class="form-control" rows="5" required></textarea>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Sign Up</button>
+                    <Input type="submit" class="btn btn-primary pull-right" value ="SignUp" name ="create">
                     <div class="clearfix"></div>
                   </form>
                 </div>
