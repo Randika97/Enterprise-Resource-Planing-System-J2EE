@@ -100,7 +100,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Vendor Name</label>
-                          <input type="text" class="form-control" id="vendorName" name="vendorName">
+                          <input type="text" class="form-control" id="vendorName" name="vendorName" required>
                         </div>
                       </div>
                     </div>
@@ -108,7 +108,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Vendor Contact No</label>
-                          <input type="text" class="form-control" id="vendorPhone" name="vendorPhone">
+                          <input type="text" class="form-control" id="vendorPhone" name="vendorPhone" required>
                         </div>
                       </div>
                     </div>
@@ -116,7 +116,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Vendor Address</label>
-                          <input type="text" class="form-control" id="vendorAddress" name="vendorAddress">
+                          <input type="text" class="form-control" id="vendorAddress" name="vendorAddress" required>
                         </div>
                       </div>
                     </div>
@@ -124,7 +124,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Vendor Email</label>
-                          <input type="text" class="form-control" id="vendorEmail" name="vendorEmail"> 
+                          <input type="text" class="form-control" id="vendorEmail" name="vendorEmail" required> 
                         </div>
                       </div>
                     </div>

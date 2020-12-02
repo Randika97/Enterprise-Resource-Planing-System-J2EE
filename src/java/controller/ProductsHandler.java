@@ -49,8 +49,8 @@ public class ProductsHandler extends HttpServlet {
                     p.setPrice(Integer.parseInt(request.getParameter("price")));
                     p.setCategory(request.getParameter("category"));
                     p.setProductDesc(request.getParameter("productDesc"));
-                    vendorId = Integer.parseInt(request.getParameter("vid"));
-                    productInsert(vendorId);
+                    //vendorId = Integer.parseInt(request.getParameter("vid"));
+                    productInsert();
                     RequestDispatcher r = request.getRequestDispatcher("/productView.jsp");
                     r.forward(request, response);
                     System.out.print("Product added successfully");
@@ -69,8 +69,9 @@ public class ProductsHandler extends HttpServlet {
                     System.out.print("Product updated successfully");
                 }
                 else if(request.getParameter("delete")!= null && request.getParameter("delete").equals("delete")){
-                   String id = (String) request.getAttribute("proid");
-                    productDelete(id);
+                    int proid = Integer.parseInt(request.getParameter("id"));
+                    System.out.println(proid);
+                    productDelete(proid);
                     RequestDispatcher r = request.getRequestDispatcher("/productView.jsp");
                     r.forward(request, response);
                 }
@@ -83,16 +84,15 @@ public class ProductsHandler extends HttpServlet {
                     System.out.println("Products rendered");
                 }
             }catch (Exception ex) {
-            PrintWriter writer = response.getWriter();
-            writer.print(ex);
-        }
+                PrintWriter writer = response.getWriter();
+                writer.print(ex);
+            }
 
     }
-        public void productInsert(int vid){
+        public void productInsert(){
             
                try{
                    //getting values from beans
-                    System.out.print(vid);
                     String productCode = p.getProdutCode();
                     String productName = p.getProductName();
                     int sih = p.getProductStockInHand();
@@ -101,9 +101,9 @@ public class ProductsHandler extends HttpServlet {
                     String category = p.getCategory();
                     //Auto_Increament by manually
                     ResultSet search = DB.search("SELECT COUNT(*) FROM `products`");
-                        if (search.next()) {
-                        count += Integer.parseInt(search.getString(1));
-                         }
+                        if (search.next()){
+                            count += Integer.parseInt(search.getString(1));
+                        }
                         int id =count;
                         DB.iud("INSERT INTO `products`(`id`,`produtCode`,`productName`,`productStockInHand`, `price`, `category`,`productDesc`) VALUES ('"+id+"','"+productCode+"','"+productName+"','"+sih+"','"+price+"','"+category+"','"+desc+"')");
                }catch(Exception e){
@@ -116,32 +116,24 @@ public class ProductsHandler extends HttpServlet {
             try{
                 //getting values from beans
                 //int id = 0;
-                
-                String productCode = p.getProdutCode();
                 String productName = p.getProductName();
                 int sih = p.getProductStockInHand();
                 int price = p.getPrice();
                 String category = p.getCategory();
                 String desc = p.getProductDesc();
-//                ResultSet uid = DB.search("SELECT id FROM `products` WHERE produtCode='"+productCode+"'");
-//                if (uid.next()) {
-//                    id= Integer.parseInt(uid.getString(1));
-//                }
                 DB.iud("UPDATE `products` SET `productName`='"+productName+"',`productStockInHand`='"+sih+"',`price`='"+price+"',`category`='"+category+"',`productDesc`='"+desc+"' WHERE `id` ='"+id+"'");
                 
-            }catch(Exception e)
-            {
+            }catch(Exception e){
                System.out.println(e);
             }
         }
-        public void productDelete(String proId) throws Exception {
-            DB.iud("DELETE FROM `products` WHERE produtCode='"+proId+"'");
+        public void productDelete(int proId) throws Exception {
+            DB.iud("DELETE FROM `products` WHERE id='"+proId+"'");
         }
         
         public List<Products> productView() throws Exception {
         ArrayList<Products> progs = new ArrayList<Products>();
         ResultSet rs = DB.search("SELECT * FROM `products`");
-
         while (rs.next()) {
             Products view = new Products();
             view.setId(Integer.parseInt(rs.getString(1)));

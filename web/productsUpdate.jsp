@@ -126,7 +126,7 @@
                           <label class="bmd-label-floating"><% out.print(rs.getString(4)); %></label>
                         <div class="form-group">
                           <label class="bmd-label-floating">Updated quantity here</label>
-                          <input type="text" class="form-control" id="productStockInHand" name="productStockInHand">
+                          <input type="text" class="form-control" id="productStockInHand" name="productStockInHand" >
                         </div>
                       </div>
                     </div>
@@ -156,6 +156,7 @@
                       </div>
                     </div>
                     <Input type="submit" class="btn btn-primary pull-right" value ="update" name ="update">
+                    <Input type="submit" class="btn btn-primary pull-right" value ="delete" name ="delete">
                     <div class="clearfix"></div>
                   </form>
                  <% } %>
